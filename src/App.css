@@ -2,37 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.title{
+  background-color: #201719;
   color: white;
+  width: 20%;
+  margin-top: none;
 }
 
-.App-link {
-  color: #61dafb;
+.inputEmail{
+  width: 140px;
+  height: 38px;
+  border: none;
+  border-radius: 13px;
+  color: #989898;
+  background-color: #FFFFFF;
+  margin-top: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputPassword{
+  width: 140px;
+  height: 38px;
+  border: none;
+  border-radius: 13px;
+  color: #989898;
+  background-color: #FFFFFF;
+  margin-right:30px ;
+}
+
+
+.Login{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 90%;
+
+}
+
+.image{
+  justify-content: center;
+  text-align: center;
+  width: 20%;
+  background-color: aqua;
+}
+
+.inputButton{
+  background-color: #E07851;
+  border: none;
+  width: 140px;
+  height: 38px;
+  border-radius: 25px;
+  color: #FFFFFF;
+}
+
+.register{
+  color: #E07851;
 }

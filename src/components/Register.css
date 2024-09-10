@@ -1,0 +1,65 @@
+.Login2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 90%;
+  
+}
+
+.title2{
+    background-color: #201719;
+    color: white;
+    width: 20%;
+    margin-top: none;
+
+}
+
+.inputFullName2{
+    width: 140px;
+    height: 38px;
+    border: none;
+    border-radius: 13px;
+    color: #989898;
+    background-color: #FFFFFF;
+    margin-top: none;
+}
+
+.inputEmail2{
+    width: 140px;
+    height: 38px;
+    border: none;
+    border-radius: 13px;
+    color: #989898;
+    background-color: #FFFFFF;
+    margin-top: none;
+}
+
+.inputPassword2{
+    width: 140px;
+  height: 38px;
+  border: none;
+  border-radius: 13px;
+  color: #989898;
+  background-color: #FFFFFF;
+  margin-right:30px ;
+}
+
+.inputButton2{
+    background-color: #E07851;
+  border: none;
+  width: 140px;
+  height: 38px;
+  border-radius: 25px;
+  color: #FFFFFF;
+}
+
+.image2{
+    justify-content: center;
+  text-align: center;
+  width: 20%;
+  background-color: rgb(10, 23, 209);
+}
+
+.register2{
+    color: #E07851;
+  }
