@@ -1,33 +1,33 @@
-/* .Login2{
+.forgot3{
     width: 100%;
     display: flex;
     justify-content: center;
-    min-height: 90%;
+    height: 90%;
 }
 
-.title2{
+.title3{
     background-color: #201719;
     color: white;
     width: 25rem;
     margin-top: none;
 }
 
-.input-text2{
+
+.input-text3{
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  gap: 1rem;
 }
 
-.inputs2{
+.inputs3{
   border: none;
   width: 280px;
   height: 100%;
   border-radius: 5rem;
 }
 
-.inputButton2{
+.inputButton3{
     background-color: #E07851;
     border: none;
   width: 280px;
@@ -36,13 +36,14 @@
   color: #FFFFFF;
 }
 
-.image2{
+
+.forgot-image{
+  background-color: black;
     justify-content: center;
   text-align: center;
   width: 25rem;
-  background-color: rgb(10, 23, 209);
 }
 
-.register2{
+.register3{
     color: #E07851;
-  } */
+  }

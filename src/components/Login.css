@@ -1,0 +1,86 @@
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    background-color: aquamarine;
+  }
+
+  .login-page {
+    display: flex;
+    width: 70%;
+    height: 75%;
+    background-color: #201719;
+    opacity: 91%;
+    border-radius: 1.5rem;
+  }
+
+  .login-page-half1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+    width: 50%;
+    height: 100%;
+  }
+
+  .login-page-half1-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 35%;
+  }
+
+  .login-page-half1-top div{
+    width: 30%;
+    height: 20%;
+  }
+
+  .login-page-half1-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 40%;
+    gap: .7rem;
+    color: white;
+  }
+
+  .login-page-half1-bottom-input {
+    min-height: 3.rem;
+    width: 18rem;
+    border: none;
+    border-radius: .7rem;
+    padding: .7rem;
+    font-size: 1rem;
+  }
+
+  .login-button{
+    background-color: #E07851;
+    color: white;
+    border: none;
+    border-radius: .7rem;
+    min-height: 2.6rem;
+    width: 18rem;
+  }
+
+  .login-register{
+    color: #E07851;
+  }
+
+  .login-page-half2 {
+    width: 50%;
+    height: 100%;
+  }
+
+
+  .login-page-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+  }
