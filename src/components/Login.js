@@ -6,21 +6,6 @@ import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-prev
 function Login() {
   return (
     <div className="login">
-      {/* <div className="title">
-            <h1>welcome</h1>
-            <p>logo</p>
-            <div className="input-text">
-                <input className="inputs" type="text" value="email" placeholder="Email"/>
-                <input className="inputs" type="text" value="password" placeholder="password"/>
-                <p>Forgot password ?</p>
-                </div>
-                <div>
-                    <input className="inputButton" type="Button" value="Login"/>
-                    <p>Do not have yet? <span className="register">Register</span></p>
-                    
-                </div>
-        </div>
-        <div className="image"></div> */}
       <div className="login-page">
         <div className="login-page-half1">
           <div className="login-page-half1-top">

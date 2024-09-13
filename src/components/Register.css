@@ -1,48 +1,95 @@
-/* .Login2{
-    width: 100%;
+
+  .register {
     display: flex;
     justify-content: center;
-    min-height: 90%;
-}
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    background-color:  aquamarine;
+  }
 
-.title2{
+  .register-page {
+    display: flex;
+    width: 70%;
+    height: 75%;
     background-color: #201719;
-    color: white;
-    width: 25rem;
-    margin-top: none;
-}
+    opacity: 91%;
+    border-radius: 1.5rem;
+  }
 
-.input-text2{
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.inputs2{
-  border: none;
-  width: 280px;
-  height: 100%;
-  border-radius: 5rem;
-}
-
-.inputButton2{
-    background-color: #E07851;
-    border: none;
-  width: 280px;
-  height: 3rem;
-  border-radius: 25px;
-  color: #FFFFFF;
-}
-
-.image2{
+  .register-half1 {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-  text-align: center;
-  width: 25rem;
-  background-color: rgb(10, 23, 209);
-}
+    align-items: center;
+    gap: .3rem;
+    width: 50%;
+    height: 100%;
+  }
 
-.register2{
+  .register-half1-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 35%;
+    color: white;
+  }
+
+  .register-half1-top div{
+    width: 30%;
+    height: 20%;
+  }
+
+  .register-half1-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 40%;
+    gap: .7rem;
+    color: white;
+  }
+
+  .register-half1-bottom-input {
+    min-height: 3.rem;
+    width: 18rem;
+    border: none;
+    border-radius: .7rem;
+    padding: .7rem;
+    font-size: 1rem;
+  }
+
+  .register-button{
+    background-color: #E07851;
+    color: white;
+    border: none;
+    border-radius: .7rem;
+    min-height: 2.6rem;
+    width: 18rem;
+  }
+
+  .register-p{
+   color: white;
+   }
+
+  .register-login{
     color: #E07851;
-  } */
+  }
+
+ .register-image{
+  height:2rem;
+  width:2rem;
+  }
+
+  .register-page-half2 {
+    width: 50%;
+    height: 100%;
+  }
+
+  .register-page-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+  }

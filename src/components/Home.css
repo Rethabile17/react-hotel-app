@@ -1,48 +1,4 @@
 
-  .home{
-    display: flex;
-    justify-content: center;
-    background-color: #201719;
-    height: 50%;
-    width: 50%;
-  }
-
-  /* .hero{
-    background-image: url(../images/view-luxurious-hotel-interior-space.png);
-    height: 50rem;
-    width: 50rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-  } */
   
-  .navbar{
-    display: flex;
-    justify-content: space-around;
-    height: 10%;
-    width: 100%
-  }
-  h1{
-    color: white;
-  }
-
-  .nav{
-    color: white;
-  }
- 
-  .home-button{
-    background-color: orangered;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    width: 75px;
-  }
-
-  .heard{
-    color: white;
-
-  }
 
  
