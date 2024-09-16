@@ -1,0 +1,38 @@
+.siteroom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.siteroom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: #201719;;
+    height: 45rem;
+    width: 95rem;
+    color: white;
+  }
+  
+  .siteroom-page{
+    height: 4rem;
+    width: 10rem;
+  }
+
+  .siteroom-image{
+    height: 20rem;
+    width: 25rem;
+  }
+  
+  .siteroom-page-button{
+    display: flex;
+    justify-content: center;
+    background-color: #E07851;
+    border: none;
+    border-radius: 3rem;
+    height: 2rem;
+    width: 6rem;
+    color: white;
+  }
+ 
