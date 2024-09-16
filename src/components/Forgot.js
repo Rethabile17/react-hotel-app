@@ -1,3 +1,4 @@
+import React from "react";
 import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-preview 2.png";
 import Image01 from "../images/city-background-panoramic-view.png"
 import "./Forgot.css"
