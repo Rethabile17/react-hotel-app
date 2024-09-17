@@ -1,0 +1,11 @@
+.Sites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Sites-page{
+    display: flex;
+    gap: 2rem;
+}

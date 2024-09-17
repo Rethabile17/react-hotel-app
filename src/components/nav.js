@@ -1,14 +1,10 @@
 import  React from 'react'
-import { useNavigate } from "react-router-dom";
-import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-preview 2.png";
 import "./nav.css"
 
 function Nav() {
   return (
     <div className='navbar'>
-        <div  className="nav-logo">
-            <img src={logo} />
-        </div>
+       
 
         <div className="menu">
         <ul>

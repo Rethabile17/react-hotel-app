@@ -21,16 +21,16 @@ function Siteroom() {
                 <h1>Rooms type</h1>
                 </div>
               <div  className="siteroom-page">
-                  <img className="siteroom-image" src={Singe} />
+                  <img className="siteroom-image" src={Singe} alt="" />
                   <button className="siteroom-page-button" onClick={Button}>Singe</button>
               </div>
               <div className="siteroom-page">
-              <img className="siteroom-image" src={Couple} />
+              <img className="siteroom-image" src={Couple} alt="" />
               <button className="siteroom-page-button" onClick={Button}>Couple</button>
         
               </div>
               <div  className="siteroom-page">
-              <img className="siteroom-image" src={Family} />
+              <img className="siteroom-image" src={Family} alt="" />
               <button className="siteroom-page-button" onClick={Button}>Family</button>
         
               </div>

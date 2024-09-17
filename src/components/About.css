@@ -1,0 +1,17 @@
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5rem;
+}
+
+.about-image{
+    height: 90rem;
+    width: 90rem;
+}
+
+.about-p{
+    height: 25rem;
+    width: 25rem;
+}

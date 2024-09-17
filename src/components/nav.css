@@ -3,9 +3,9 @@
     justify-content: space-around;
 }
 
-.nav-logo{
-    width: 30%;
-    height: 15%;
+.logo-image{
+    width: 60%;
+    height: 100px;
 }
 
 ul {
