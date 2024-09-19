@@ -1,5 +1,6 @@
-import  React from 'react'
-import "./nav.css"
+import  React from 'react';
+import "./nav.css";
+import { Link } from "react-router-dom";
 
 function Nav() {
   return (
@@ -8,9 +9,12 @@ function Nav() {
 
         <div className="menu">
         <ul>
-          
-            <li><a>Home</a></li>
-            <li><a>About</a></li>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/rooms">Rooms</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/Forgot">Forgot</Link></li>
         </ul>
         </div>
 
@@ -18,7 +22,17 @@ function Nav() {
             <button>Logout</button>
         </div>
        
-
+        {/* <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/Forgot" element={<Forgot/>}/>
+        <Route path="/Nav" element={<Nav/>}/>
+        <Route path="/Hero" element={<Hero/>}/>
+        <Route path="/siteroom" element={<Siteroom/>}/>
+        <Route path="/rooms" element={<Rooms/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/service" element={<Service/>} />
+        <Route path="/Sites" element={<Sites/>} />
+        <Route path="/Roomart" element={<Roomart/>} /> */}
     </div>
   )
 }

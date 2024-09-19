@@ -8,34 +8,23 @@
 
   .room-page {
     display: flex;
-    width: 70%;
+    width: 60%;
     height: 75%;
     background-color: #201719;
     opacity: 91%;
     border-radius: 1.5rem;
   }
 
-  .room-page-top{
-    display: flex;
-    background-color: aqua;
-    height: 10rem;
-    width: 10rem;
-  }
+  
+  .room-head{
+    color: white;
+}
 
-  .room-top-part{
-    justify-content: center;
-    align-content: center;
-    height: 8.30rem;
-    width: 47.99rem;
+.room-top{
+  width: 10rem;
 
-  }
+}
 
-  .room-top-logo{
-    height: 10rem;
-    width: 10rem;
-  }
+.room-down{
 
-  .about {
-    width: 100%;
-    height: 100vh;
-  }
+}
