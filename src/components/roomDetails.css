@@ -1,0 +1,74 @@
+.roomDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85vh;
+}
+
+.roomDetails-page{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 45vh;
+    width: 69rem;
+    background-color: #201719;
+    color: aliceblue;
+}
+
+.roomDetails-top{
+    display: flex;
+    gap: 1rem;
+    padding-left: 0.50rem;
+    height: 31vh;
+    width: 120rem;
+    color: blue;
+    display: flex;
+    
+}
+.view1{
+    width: 49rem;
+    height: 31vh;
+}
+
+.roomDetails-views{
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.view2, .view3{
+    width: 50rem;
+    gap: 3rem;
+    height: auto;
+}
+
+.view2{
+    height: 15vh;
+}
+
+.view3{
+    height: 15vh;
+}
+
+.roomDetails-down{
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+.roomDetails-down-page{
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
+}
+
+.roomDetails-button{
+    height: 3vh;
+    width: 5rem;
+    border: none;
+    border-radius: 10rem;
+    background-color: #E07851;
+    color: white;
+}

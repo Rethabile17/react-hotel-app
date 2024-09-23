@@ -6,11 +6,14 @@ import Home from './components/Home';
 import Nav from "./components/nav";
 import Hero  from './components/hero';
 import Siteroom from "./components/siteroom";
-import Rooms from "./components/rooms"
-import About from "./components/About"
-import Service from "./components/Service"
-import './App.css';
+import Rooms from "./components/rooms";
+import About from "./components/About";
+import Service from "./components/Service";
 import Sites from './components/Sites';
+import RoomDetails from './components/RoomDetail';
+import CheckoutDetails from './components/checkoutDetails';
+import './App.css';
+
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/service" element={<Service/>} />
         <Route path="/Sites" element={<Sites/>} />
+        <Route path="/roomDetails" element={<RoomDetails />} />
+        <Route path="/checkoutDetails" element={<CheckoutDetails />} />
        
       </Routes>
       </BrowserRouter>

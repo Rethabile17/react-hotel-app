@@ -9,7 +9,7 @@ function Nav() {
 
         <div className="menu">
         <ul>
-            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/rooms">Rooms</Link></li>
             <li><Link to="/login">Login</Link></li>

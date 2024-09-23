@@ -5,19 +5,15 @@ import "./Hero.css"
 function Hero() {
      const Navigate = useNavigate();
 
-
-
-
-
+     const siteButton = () => {
+      Navigate("/siteroom")
+     }
      
-        Navigate('/')
-     
-
     return (
       <div className='hero'>
         <div>
             <h1>Where style meet Luxury</h1>
-            <button>book now</button>
+            <button onClick={siteButton}  >book now</button>
         </div>
         </div>
     

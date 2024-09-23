@@ -9,10 +9,10 @@ import "./siteroom.css";
 
 function Siteroom() {
 
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const Button = () => {
-      Navigate("/rooms");
+    const goToRooms = () => {
+      navigate("/rooms");
     };
    return (
     <div class="siteroom-container">
@@ -22,16 +22,16 @@ function Siteroom() {
                 </div>
               <div  className="siteroom-page">
                   <img className="siteroom-image" src={Singe} alt="" />
-                  <button className="siteroom-page-button" onClick={Button}>Singe</button>
+                  <button className="siteroom-page-button" onClick={goToRooms}>Singe</button>
               </div>
               <div className="siteroom-page">
               <img className="siteroom-image" src={Couple} alt="" />
-              <button className="siteroom-page-button" onClick={Button}>Couple</button>
+              <button className="siteroom-page-button" onClick={goToRooms}>Couple</button>
         
               </div>
               <div  className="siteroom-page">
               <img className="siteroom-image" src={Family} alt="" />
-              <button className="siteroom-page-button" onClick={Button}>Family</button>
+              <button className="siteroom-page-button" onClick={goToRooms}>Family</button>
         
               </div>
         
