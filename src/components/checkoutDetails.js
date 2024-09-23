@@ -1,28 +1,29 @@
 import React from "react";
 import "./checkoutDetails.css";
-import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function CheckoutDetails() {
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Safely access room and totalPrice
+  const room = location.state?.room; 
+  const totalPrice = location.state?.totalPrice;
 
-  console.log("location:",location.state.location.state.room)
-  const room=location.state.location.state.room;
-
+  // Handle the case when the state is undefined
+  if (!room || totalPrice === undefined) {
+    return <div>Error: No booking details found.</div>;
+  }
 
   const restButton = () => {
-    navigate("/")
+    navigate("/");
   };
 
   return (
     <div className="checkoutview">
       <div className="checkoutview-page">
         <div className="form">
-          <input type="date" placeholder="checkIn" />
-          <input type="date" placeholder="checkOut" />
-         <p>{room.price}</p>
-         
+          <p>Total Price: R{totalPrice.toFixed(2)}</p>
         </div>
         <div>
           <button className="checkButton" onClick={restButton}>Reserve</button>
@@ -31,4 +32,5 @@ function CheckoutDetails() {
     </div>
   );
 }
+
 export default CheckoutDetails;

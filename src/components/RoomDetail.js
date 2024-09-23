@@ -8,7 +8,7 @@ import "./roomDetails.css";
 function RoomDetails() {
   const navigate = useNavigate();
   const location = useLocation();
-  const room = location.state.room;
+  const room = location.state?.room; // Safely access the room
 
   const [arrivalDate, setArrivalDate] = useState('');
   const [leaveDate, setLeaveDate] = useState('');
@@ -22,9 +22,8 @@ function RoomDetails() {
   };
 
   const calculateTotalPrice = () => {
-    const dailyRate = room.price; // Use the room's price as the daily rate
+    const dailyRate = room.price; 
     const amountOfDays = calculateStayTime(arrivalDate, leaveDate);
-    console.log("Amount of Days:", amountOfDays); // Debugging line
     return dailyRate * amountOfDays;
   };
 
@@ -39,15 +38,14 @@ function RoomDetails() {
 
   useEffect(() => {
     updateTotalPrice();
-  }, [arrivalDate, leaveDate]); // Update total price when dates change
+  }, [arrivalDate, leaveDate]); 
 
   const imgButton = () => {
-    console.log("Total Price on Booking:", totalPrice); // Debugging line
     navigate("/checkoutDetails", {
       state: {
-        location,
-        totalPrice
-      }
+        room,
+        totalPrice,
+      },
     });
   };
 
@@ -58,42 +56,36 @@ function RoomDetails() {
           <div>
             <img src={view1} alt="" className="view1" />
           </div>
-
           <div className="roomDetails-views">
-            <div>
-              <img src={view2} alt="" className="view2" />
-            </div>
-            <div>
-              <img src={view3} alt="" className="view3" />
-            </div>
+            <div><img src={view2} alt="" className="view2" /></div>
+            <div><img src={view3} alt="" className="view3" /></div>
           </div>
         </div>
 
         <div className="roomDetails-down">
           <div>
             <p>{room.description}</p>
-
             <div className="roomDetails-down-page">
               <p>{room.roomType}</p>
               <p>{room.roomNumber}</p>
               <p>R{room.price} per night</p>
-              <p>{room.guest}</p>
-
-              {/* Input fields for arrival and leave dates */}
+              <p>only {room.guest} can stay in this room </p>
+              
               <input
+                className="roomDetail-input"
                 type="date"
                 value={arrivalDate}
                 onChange={(e) => setArrivalDate(e.target.value)}
                 placeholder="Arrival Date"
               />
               <input
+                className="roomDetail-input"
                 type="date"
                 value={leaveDate}
                 onChange={(e) => setLeaveDate(e.target.value)}
                 placeholder="Leave Date"
               />
 
-              {/* Display total price */}
               <div className="totalPrice">
                 <p>Total Price: R{totalPrice.toFixed(2)}</p>
               </div>

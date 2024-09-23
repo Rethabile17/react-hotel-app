@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    height: 45vh;
+    height: 60vh;
     width: 69rem;
     background-color: #201719;
     color: aliceblue;
@@ -71,4 +71,8 @@
     border-radius: 10rem;
     background-color: #E07851;
     color: white;
+}
+
+.roomDetail-input{
+    width: 10rem;
 }

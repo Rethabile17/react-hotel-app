@@ -11,9 +11,10 @@
 .checkoutview-page{
     display: flex;
     align-items: center;
-    background-color: wheat;
+    background-color: #201719;
     height: 50vh;
     width: 47rem;
+    color: white;
 }
 
 .form{
