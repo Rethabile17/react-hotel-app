@@ -8,7 +8,7 @@ import "./roomDetails.css";
 function RoomDetails() {
   const navigate = useNavigate();
   const location = useLocation();
-  const room = location.state?.room; // Safely access the room
+  const room = location.state?.room;
 
   const [arrivalDate, setArrivalDate] = useState('');
   const [leaveDate, setLeaveDate] = useState('');
@@ -22,7 +22,7 @@ function RoomDetails() {
   };
 
   const calculateTotalPrice = () => {
-    const dailyRate = room.price; 
+    const dailyRate = room.price;
     const amountOfDays = calculateStayTime(arrivalDate, leaveDate);
     return dailyRate * amountOfDays;
   };
@@ -38,12 +38,15 @@ function RoomDetails() {
 
   useEffect(() => {
     updateTotalPrice();
-  }, [arrivalDate, leaveDate]); 
+  }, [arrivalDate, leaveDate]);
 
   const imgButton = () => {
     navigate("/checkoutDetails", {
       state: {
         room,
+        roomType: room.roomType, // Make sure to pass the roomType
+        arrivalDate,
+        leaveDate,
         totalPrice,
       },
     });
@@ -69,7 +72,7 @@ function RoomDetails() {
               <p>{room.roomType}</p>
               <p>{room.roomNumber}</p>
               <p>R{room.price} per night</p>
-              <p>only {room.guest} can stay in this room </p>
+              <p>only {room.guest} can stay in this room</p>
               
               <input
                 className="roomDetail-input"
