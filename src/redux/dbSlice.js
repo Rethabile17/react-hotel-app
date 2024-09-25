@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, addDoc } from 'firebase/firestore';
 import { db } from '../configure/firebase'; // Firestore config
 const initialState = {
   data: [],
@@ -40,3 +40,23 @@ export const fetchData = () => async (dispatch) => {
     dispatch(setError(error.message));
   }
 };
+
+
+export const addBookies = ({fullName, email, roomType, arrivalDate,leaveDate ,  totalPrice}) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, "Bookies"), {
+      fullName: fullName,
+      email:  email,
+      roomType: roomType,
+      arrivalDate: arrivalDate,
+      leaveDate: leaveDate,
+      totalPrice:  totalPrice,
+
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+}

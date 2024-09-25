@@ -19,7 +19,7 @@ function CheckoutDetails() {
   }
 
   const restButton = () => {
-    navigate("/");
+    navigate("/payment");
   };
 
   return (
@@ -33,6 +33,9 @@ function CheckoutDetails() {
         </div>
         <div>
           <button className="checkButton" onClick={restButton}>Reserve</button>
+        </div>
+        <div>
+        <button className="checkButton" onClick={restButton}>checkOut</button>
         </div>
       </div>
     </div>

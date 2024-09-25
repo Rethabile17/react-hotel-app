@@ -4,6 +4,7 @@ import view1 from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import view2 from "../images/Plank-Slider-2.jpg";
 import view3 from "../images/prado_luxury_hotel_room_standard_family_inner_view.png";
 import "./roomDetails.css";
+import { TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon , FacebookShareButton,FacebookIcon } from 'react-share';
 
 function RoomDetails() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function RoomDetails() {
   const [arrivalDate, setArrivalDate] = useState('');
   const [leaveDate, setLeaveDate] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
+  
 
   const calculateStayTime = (arrivalDate, leaveDate) => {
     const ArrivalDate = new Date(arrivalDate);
@@ -36,6 +38,10 @@ function RoomDetails() {
     }
   };
 
+  const shareUrl = window.location.href;
+
+
+
   useEffect(() => {
     updateTotalPrice();
   }, [arrivalDate, leaveDate]);
@@ -56,6 +62,21 @@ function RoomDetails() {
     <div className="roomDetails">
       <div className="roomDetails-page">
         <div className="roomDetails-top">
+        <div>
+           
+            <TwitterShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+
+            <LinkedinShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+
+            <FacebookShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            
+          </div>
           <div>
             <img src={view1} alt="" className="view1" />
           </div>

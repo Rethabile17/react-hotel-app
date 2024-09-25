@@ -12,6 +12,7 @@ import Service from "./components/Service";
 import Sites from './components/Sites';
 import RoomDetails from './components/RoomDetail';
 import CheckoutDetails from './components/checkoutDetails';
+import Payment from './components/payment';
 import './App.css';
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/Sites" element={<Sites/>} />
         <Route path="/roomDetails" element={<RoomDetails />} />
         <Route path="/checkoutDetails" element={<CheckoutDetails />} />
+        <Route path="/payment" element={<Payment />} />
        
       </Routes>
       </BrowserRouter>

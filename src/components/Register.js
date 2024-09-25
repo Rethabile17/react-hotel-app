@@ -15,6 +15,7 @@ function Register() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
 
   const { user, loader, error } = useSelector((state) => state.auth);
 
@@ -28,7 +29,7 @@ function Register() {
   }, [user, navigate]);
 
   const create = () => {
-    dispatch(signUp({ email, password }));
+    dispatch(signUp({ email, password, fullName }));
     // Navigate("/");
   };
 
@@ -47,6 +48,8 @@ function Register() {
               className="register-half1-bottom-input"
               type="text"
               placeholder="fullName"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
             <input
               className="register-half1-bottom-input"
