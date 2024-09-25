@@ -13,14 +13,22 @@ import Sites from './components/Sites';
 import RoomDetails from './components/RoomDetail';
 import CheckoutDetails from './components/checkoutDetails';
 import Payment from './components/payment';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import './App.css';
 
 
 function App() {
+  const initialOptions = {
+    "client-id": "ATjq_6gq7yvLxEmhBmsY8U8o_6TAOlHdErnzWViqx1db9GPXEJcrnMYPM7mQ6vteIQdEulwqUOB_JH5J",
+    currency: "USD",
+    intent: "capture",
+  };
   return (
     <div>
+      <PayPalScriptProvider options={initialOptions}>
       <BrowserRouter>
       <Nav />
+   
       <Routes>
       <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -39,6 +47,7 @@ function App() {
        
       </Routes>
       </BrowserRouter>
+      </PayPalScriptProvider>
     </div>
   );
 }

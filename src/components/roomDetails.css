@@ -51,6 +51,11 @@
     height: 15vh;
 }
 
+.heart{
+    height: 2rem;
+    width: 4rem;
+}
+
 .roomDetails-down{
     display: flex;
     gap: 1rem;

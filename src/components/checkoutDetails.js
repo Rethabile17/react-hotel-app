@@ -1,45 +1,57 @@
-import React from "react";
-import "./checkoutDetails.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import './checkoutDetails.css';
 
-function CheckoutDetails() {
-  const navigate = useNavigate();
-  const location = useLocation();
+const CheckoutDetails = () => {
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    const [currency, setCurrency] = useState(options.currency);
 
-  // Safely access room details
-  const room = location.state?.room;
-  const totalPrice = location.state?.totalPrice;
-  const arrivalDate = location.state?.arrivalDate;
-  const leaveDate = location.state?.leaveDate;
-  const roomType = location.state?.roomType;
+    const onCurrencyChange = ({ target: { value } }) => {
+        setCurrency(value);
+        dispatch({
+            type: "resetOptions",
+            value: {
+                ...options,
+                currency: value,
+            },
+        });
+    }
 
-  // Handle the case when the state is undefined
-  if (!room || totalPrice === undefined || !arrivalDate || !leaveDate || !roomType) {
-    return <div>Error: No booking details found.</div>;
-  }
+    const onCreateOrder = (data,actions) => {
+        return actions.order.create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: "8.99",
+                    },
+                },
+            ],
+        });
+    }
 
-  const restButton = () => {
-    navigate("/payment");
-  };
+    const onApproveOrder = (data,actions) => {
+        return actions.order.capture().then((details) => {
+            const name = details.payer.name.given_name;
+            alert(`Transaction completed by ${name}`);
+        });
+    }
 
-  return (
-    <div className="checkoutview">
-      <div className="checkoutview-page">
-        <div className="form">
-          <p>Room Type: {roomType}</p>
-          <p>Arrival Date: {arrivalDate}</p>
-          <p>Leave Date: {leaveDate}</p>
-          <p>Total Price: R{totalPrice.toFixed(2)}</p>
+    return (
+        <div className="checkout">
+            {isPending ? <p>LOADING...</p> : (
+                <>
+                    <select value={currency} onChange={onCurrencyChange}>
+                            <option value="USD">💵 USD</option>
+                            <option value="EUR">💶 Euro</option>
+                    </select>
+                    <PayPalButtons 
+                        style={{ layout: "vertical" }}
+                        createOrder={(data, actions) => onCreateOrder(data, actions)}
+                        onApprove={(data, actions) => onApproveOrder(data, actions)}
+                    />
+                </>
+            )}
         </div>
-        <div>
-          <button className="checkButton" onClick={restButton}>Reserve</button>
-        </div>
-        <div>
-        <button className="checkButton" onClick={restButton}>checkOut</button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
-
-export default CheckoutDetails;
+export default CheckoutDetails

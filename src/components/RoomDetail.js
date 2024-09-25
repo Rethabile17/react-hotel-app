@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import view1 from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import view2 from "../images/Plank-Slider-2.jpg";
 import view3 from "../images/prado_luxury_hotel_room_standard_family_inner_view.png";
+import Heart from "../images/heart_6229655.png";
 import "./roomDetails.css";
 import { TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon , FacebookShareButton,FacebookIcon } from 'react-share';
 
@@ -76,6 +77,9 @@ function RoomDetails() {
               <FacebookIcon size={32} round />
             </FacebookShareButton>
             
+          </div>
+          <div className="like">
+            <button><img className="heart" src={Heart} /></button>
           </div>
           <div>
             <img src={view1} alt="" className="view1" />
