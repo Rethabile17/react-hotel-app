@@ -1,14 +1,43 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { addBookings } from "../redux/dbSlice";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../configure/firebase";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { useLocation } from "react-router-dom";
 import './checkoutDetails.css';
 
 const CheckoutDetails = () => {
-    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    const [{ options, isPending }, paypalDispatch] = usePayPalScriptReducer(); // Renamed this dispatch to paypalDispatch
     const [currency, setCurrency] = useState(options.currency);
+
+    const location = useLocation();
+    const { arrivalDate, leaveDate, totalPrice, room } = location.state || {}; // Now extracting room from location.state
+
+    const dispatch = useDispatch(); // Kept this dispatch for Redux actions
+
+    const user = useSelector((state) => state.auth.user); // Changed to lowercase 'state'
+
+    const bookingData = {
+        firstName: user?.firstName || "Guest First Name",
+        email: user?.email || "",
+        roomType: room?.roomType || "Standard", // Now using room from location.state
+        arrivalDate: arrivalDate,
+        leaveDate: leaveDate,
+    };
+
+    const addBookingToFirestore = async (bookingData) => {
+        try {
+            await addDoc(collection(db, "bookings"), bookingData);
+            console.log("Booking added to Firestore");
+        } catch (error) {
+            console.error("Error adding booking: ", error);
+        }
+    };
 
     const onCurrencyChange = ({ target: { value } }) => {
         setCurrency(value);
-        dispatch({
+        paypalDispatch({ // Using paypalDispatch here
             type: "resetOptions",
             value: {
                 ...options,
@@ -17,32 +46,52 @@ const CheckoutDetails = () => {
         });
     }
 
-    const onCreateOrder = (data,actions) => {
+    const onCreateOrder = (data, actions) => {
         return actions.order.create({
             purchase_units: [
                 {
                     amount: {
-                        value: "8.99",
+                        value: totalPrice ? totalPrice.toFixed(2) : "0.00",
                     },
                 },
             ],
         });
     }
 
-    const onApproveOrder = (data,actions) => {
+    const onApproveOrder = (data, actions) => {
         return actions.order.capture().then((details) => {
             const name = details.payer.name.given_name;
-            alert(`Transaction completed by ${name}`);
+            const updatedBookingData = {
+                ...bookingData,
+                paid: "Yes",
+                transactionId: details.id,
+                payerName: details.payer.name.given_name,
+                email: details.payer.email_address,
+            };
+
+            addBookingToFirestore(updatedBookingData);
+            dispatch(addBookings(updatedBookingData)); // Redux dispatch
+
+            alert(`Transaction completed by ${details.payer.name.given_name}`);
+        }).catch((err) => {
+            console.error("Payment approval error: ", err);
+            alert("An error occurred during the payment approval.");
         });
     }
 
     return (
         <div className="checkout">
+            <div className='checkout-page'>
+                <h2>Checkout Details</h2>
+                <p><strong>Check-in:</strong> {arrivalDate || "N/A"}</p>
+                <p><strong>Check-out:</strong> {leaveDate || "N/A"}</p>
+                <p><strong>Total Price:</strong> R{totalPrice ? totalPrice.toFixed(2) : "0.00"}</p>
+            </div>
             {isPending ? <p>LOADING...</p> : (
                 <>
                     <select value={currency} onChange={onCurrencyChange}>
-                            <option value="USD">💵 USD</option>
-                            <option value="EUR">💶 Euro</option>
+                        <option value="USD">💵 USD</option>
+                        <option value="EUR">💶 Euro</option>
                     </select>
                     <PayPalButtons 
                         style={{ layout: "vertical" }}
@@ -54,4 +103,5 @@ const CheckoutDetails = () => {
         </div>
     );
 }
-export default CheckoutDetails
+
+export default CheckoutDetails;
