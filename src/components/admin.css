@@ -1,0 +1,38 @@
+.admin{
+    display: flex;
+    justify-content: center;
+}
+
+.admin-page{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.admin-head{
+    height: 2rem;
+}
+
+.admin-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.admin-navbar{
+    display: flex;
+    gap: 1.50rem;
+    border: none;
+    border-radius: 5rem;
+}
+
+.admin-down{
+    display: flex;
+}
+
+.admin-input{
+    display: flex;
+    gap: .50rem;
+}

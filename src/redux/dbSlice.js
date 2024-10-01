@@ -2,6 +2,7 @@ import { async } from "@firebase/util";
 import { createSlice } from '@reduxjs/toolkit';
 import { getDocs, collection, addDoc } from 'firebase/firestore';
 import { db } from '../configure/firebase'; // Firestore config
+
 const initialState = {
   data: [],
   loading: false,
@@ -25,13 +26,14 @@ const dataSlice = createSlice({
       state.loading = false;
     },
     addBookingToState(state, action) {
-      state.addBookingToState = action.payload;
-      state.loading =  false;
+      state.data.push(action.payload); // Add the new booking to the data array
+      state.loading = false;
     }
   },
 });
 export const { setLoading, setData, setError, addBookingToState } = dataSlice.actions;
 export default dataSlice.reducer;
+
 export const fetchData = () => async (dispatch) => {
   dispatch(setLoading());
   try {
@@ -45,6 +47,17 @@ export const fetchData = () => async (dispatch) => {
     dispatch(setError(error.message));
   }
 };
+
+export const fetchBookings = () => async (dispatch) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "bookings"));
+    const bookingsList = querySnapshot.docs.map(doc => doc.data());
+    dispatch(setData(bookingsList)); // Store in Redux
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
+
 
 export const addBookings = ({fullName, email, roomType, arrivalDate, leaveDate,  totalPrice , bookingData}) => async (dispatch) => {
   try {
@@ -79,3 +92,4 @@ export const getBookings = () => async (dispatch) => {
     dispatch(setError(error.message));
   }
 };
+
