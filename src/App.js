@@ -27,7 +27,6 @@ function App() {
     <div>
       <PayPalScriptProvider options={initialOptions}>
       <BrowserRouter>
-      <Nav />
    
       <Routes>
       <Route path="/" element={<Home/>}/>

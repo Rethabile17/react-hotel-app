@@ -74,52 +74,56 @@ function Admin() {
   return (
     <div className="admin">
       <div className="admin-page">
-        <h1 className="admin-head">Booking List</h1>
+        <div className="admin-top">
+          <h1 className="admin-head">Booking List</h1>
 
-        <div className="admin-input">
-          <input
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
-          <input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            placeholder="Room Type"
-            value={roomType}
-            onChange={(e) => setRoomType(e.target.value)}
-          />
-          <input
-            type="date"
-            placeholder="Arrival Date"
-            value={arrivalDate}
-            onChange={(e) => setArrivalDate(e.target.value)}
-          />
-          <input
-            type="date"
-            placeholder="Leave Date"
-            value={leaveDate}
-            onChange={(e) => setLeaveDate(e.target.value)}
-          />
-        </div>
+          <div className="admin-input">
+            <input
+              placeholder="Full Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+            <input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              placeholder="Room Type"
+              value={roomType}
+              onChange={(e) => setRoomType(e.target.value)}
+            />
+            <input
+              type="date"
+              placeholder="Arrival Date"
+              value={arrivalDate}
+              onChange={(e) => setArrivalDate(e.target.value)}
+            />
+            <input
+              type="date"
+              placeholder="Leave Date"
+              value={leaveDate}
+              onChange={(e) => setLeaveDate(e.target.value)}
+            />
+          </div>
 
-        <div className="totalPrice">
-          <p>Total Price: R{totalPrice.toFixed(2)}</p>
-        </div>
+          <div className="totalPrice">
+            <p>Total Price: R{totalPrice.toFixed(2)}</p>
+          </div>
 
-        <div>
-          <button className="admin-button" onClick={handleAddBooking}>
-            Add Booking
-          </button>
-        </div>
+          <div className="admin-button-body">
+            <div>
+              <button className="admin-button" onClick={handleAddBooking}>
+                Add Booking
+              </button>
+            </div>
 
-        <div>
-          <button className="admin-button" onClick={fetchBookings}>
-            View Bookings
-          </button>
+            <div>
+              <button className="admin-button" onClick={fetchBookings}>
+                View Bookings
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Render fetched bookings */}
@@ -129,7 +133,7 @@ function Admin() {
             <p>No bookings available.</p>
           ) : (
             <table>
-              <thead>
+              <thead >
                 <tr>
                   <th>Full Name</th>
                   <th>Email</th>
@@ -139,25 +143,25 @@ function Admin() {
                   <th>Total Price</th>
                 </tr>
               </thead>
-              <tbody>
-  {bookings.map((booking, index) => (
-    <tr key={index}>
-      <td>{booking.fullName}</td>
-      <td>{booking.email}</td>
-      <td>{booking.roomType}</td>
-      <td>{booking.arrivalDate}</td>
-      <td>{booking.leaveDate}</td>
-      {/* Ensure booking.totalPrice is valid before calling toFixed */}
-      <td>
-        R
-        {typeof booking.totalPrice === "number" && !isNaN(booking.totalPrice)
-          ? booking.totalPrice.toFixed(2)
-          : "0.00"}
-      </td>
-    </tr>
-  ))}
-</tbody>
-
+              <tbody >
+                {bookings.map((booking, index) => (
+                  <tr key={index}>
+                    <td>{booking.fullName}</td>
+                    <td>{booking.email}</td>
+                    <td>{booking.roomType}</td>
+                    <td>{booking.arrivalDate}</td>
+                    <td>{booking.leaveDate}</td>
+                    {/* Ensure booking.totalPrice is valid before calling toFixed */}
+                    <td>
+                      R
+                      {typeof booking.totalPrice === "number" &&
+                      !isNaN(booking.totalPrice)
+                        ? booking.totalPrice.toFixed(2)
+                        : "0.00"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           )}
         </div>
