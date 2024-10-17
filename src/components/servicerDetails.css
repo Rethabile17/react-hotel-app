@@ -1,0 +1,33 @@
+.servicerDetails {
+  display: flex;
+  gap: 2rem; 
+  align-items: flex-start;
+}
+
+.servicerDetails-icons {
+  display: grid;
+  grid-template: repeat(4, auto) / repeat(2, 1fr);
+  gap: 1rem;
+  height: 18rem;
+    width: 30rem;
+  background-color: rgb(31, 17, 17);
+  justify-items: center;
+}
+
+.service-img {
+  height: 4rem; 
+  width: 4rem;
+}
+
+.servicerDetails-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto; 
+  width: auto;
+}
+
+.servicerDetails-img {
+  height: 20rem;
+    width: 18rem;
+}

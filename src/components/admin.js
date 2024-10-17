@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addBookings } from "../redux/dbSlice";
+import { addRooms } from "../redux/dbSlice";
 import { addDoc, collection, getDocs } from "firebase/firestore"; // Import getDocs for fetching bookings
 import { db } from "../configure/firebase";
 import "./admin.css";
@@ -46,9 +46,9 @@ function Admin() {
 
     // Add booking to Firestore
     try {
-      await addDoc(collection(db, "bookings"), bookingData);
+      await addDoc(collection(db, "Room"), bookingData);
       console.log("Booking added to Firestore");
-      dispatch(addBookings(bookingData)); // Add booking to Redux
+      dispatch(addRooms(bookingData)); // Add booking to Redux
       fetchBookings(); // Fetch updated bookings after adding a new one
     } catch (error) {
       console.error("Error adding booking: ", error);

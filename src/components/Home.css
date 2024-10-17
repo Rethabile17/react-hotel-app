@@ -1,11 +1,83 @@
-.about-heading{
-  text-align: center;
+
+*{
+  color: whitesmoke
 }
 
-.Service-head{
-  text-align: center;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Sites-head{
-  text-align: center;
+.hero {
+  width: 95%;
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../images/view-luxurious-hotel-interior-space.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  gap: 5rem;
+}
+
+.home-page-hero-heading {
+  color: whitesmoke;
+  font-size: 3.8rem; 
+  font-weight: 400;
+  text-align: center; 
+}
+
+.book-now-btn {
+  padding: 0.5rem 1rem;
+  background-color: #f0a500;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem; 
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 3.5rem;
+}
+
+.book-now-btn:hover {
+  background-color: #d18e00; 
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    gap: 3rem; 
+  }
+
+  .home-page-hero-heading {
+    font-size: 2.8rem; 
+  }
+
+  .book-now-btn {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem; 
+  }
+
+  .book-now-btn {
+    margin-bottom: 2.5rem; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    gap: 2rem; 
+    padding: 1rem 0;
+  }
+
+  .home-page-hero-heading {
+    font-size: 2.2rem; 
+    padding: 0 1rem; 
+  }
+
+  .book-now-btn {
+    font-size: 1rem; 
+    padding: 0.5rem 0.6rem; 
+    margin-bottom: 1.5rem; 
+  }
 }

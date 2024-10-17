@@ -3,9 +3,6 @@ import Hotel from "../images/98827f1c13da20e9455fcc69afa91eb7.jpg";
 import "./About.css";
 function About() {
   return (
-
-    
-    
     <div className="about">
         <div>
         <img className="about-imag" src={Hotel} />   

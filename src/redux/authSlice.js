@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword , sendPasswordResetEmail } from 'firebase/auth';
 import { collection, addDoc } from "firebase/firestore"; 
 import { db } from '../configure/firebase';
 import { auth } from '../configure/firebase';
@@ -45,6 +45,17 @@ export const signUp = ({ email, password, fullName }) => async (dispatch) => {
     dispatch(setError(error.message));
   }
 };
+
+export const resetPassword = ({ email }) => async (dispatch) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    alert(" user check your email")
+    dispatch(setUser());
+  } catch (error) {
+    console.error("Error sending password reset email:", error.message);
+  }
+};
+
 export const signIn = ({ email, password }) => async (dispatch) => {
   dispatch(setLoading());
   try {

@@ -93,3 +93,22 @@ export const getBookings = () => async (dispatch) => {
   }
 };
 
+export const addRooms = ({fullName, email, roomType, arrivalDate, leaveDate,  totalPrice , bookingData}) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, "Room"), {
+      fullName: fullName,
+      email:  email,
+      roomType: roomType,
+      arrivalDate: arrivalDate,
+      leaveDate: leaveDate,
+      totalPrice:  totalPrice,
+      bookingData,
+    });
+    console.log("Document written with ID: ", docRef.id);
+    dispatch(addBookingToState({ id: docRef.id, ...bookingData }));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};

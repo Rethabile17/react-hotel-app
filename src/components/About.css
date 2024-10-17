@@ -1,17 +1,19 @@
 .about {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: row;
     gap: 5rem;
+    margin-top: 3%;
 }
 
-.about-image{
-    height: 90rem;
-    width: 90rem;
+
+.about-imag{
+    height: 18rem;
+    width: 30rem;
 }
 
 .about-p{
     height: 25rem;
-    width: 25rem;
+    width: 45rem;
+    color: whitesmoke;
 }

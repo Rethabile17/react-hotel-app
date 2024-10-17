@@ -24,7 +24,7 @@ function Register() {
   useEffect(() => {
     if (user) {
       alert("register successful");
-      navigate("/");
+      navigate("/home");
     }
   }, [user, navigate]);
 
@@ -38,16 +38,16 @@ function Register() {
       <div className="register-page">
         <div className="register-half1">
           <div className="register-half1-top">
-            <h1>Welcome Back</h1>
-            <div>
+          <div>
               <img src={logo} />
             </div>
+            <h1>Welcome Back</h1>
           </div>
           <div className="register-half1-bottom">
             <input
               className="register-half1-bottom-input"
               type="text"
-              placeholder="fullName"
+              placeholder="FullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
@@ -55,13 +55,13 @@ function Register() {
               className="register-half1-bottom-input"
               value={email}
               type="text"
-              placeholder="email address"
+              placeholder="Email "
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               className="register-half1-bottom-input"
               type="text"
-              placeholder="password"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="register-button" onClick={create}>
@@ -75,7 +75,7 @@ function Register() {
               <h1></h1>
             )}
             {error && <p>Error : {error} </p>}
-            <Link to={`/`}>
+            <Link to={"/"}>
               {" "}
               <p className="register-p">
                 Already have an account ?{" "}
@@ -83,15 +83,7 @@ function Register() {
               </p>
             </Link>
 
-            <p>
-              <span>
-                <img className="register-image" src={google} alt="" />
-              </span>{" "}
-              or{" "}
-              <span>
-                <img className="register-image" src={apple} alt="" />
-              </span>
-            </p>
+           
           </div>
         </div>
         <div className="register-page-half2">

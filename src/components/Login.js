@@ -15,9 +15,15 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  
+
   const { user, loader, error } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+   
+const handleForgot =() =>{
+  navigate('/Forgot')
+}
 
   useEffect(() => {
     if (user) {
@@ -37,25 +43,26 @@ function Login() {
       <div className="login-page">
         <div className="login-page-half1">
           <div className="login-page-half1-top">
-            <h1>Welcome Back</h1>
-            <div>
+
+          <div>
               <img src={logo} />
             </div>
+            <h1  style={{paddingTop:"5%"}}> Welcome Back</h1>
           </div>
           <div className="login-page-half1-bottom">
             <input
               className="login-page-half1-bottom-input"
               type="text"
-              placeholder="email address"
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               className="login-page-half1-bottom-input"
               type="text"
-              placeholder="password"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="login-p"> Forgot password ?</p>
+            <p className="login-p" onClick={handleForgot}> Forgot password ?</p>
             <button className="login-button" onClick={loginBtn}>
               Login
             </button>
@@ -73,7 +80,7 @@ function Login() {
               <h1></h1>
             )}
             {error && <p>Error : {error} </p>}
-            <Link to={`register`}>
+            <Link to={"/register"}>
               {" "}
               <p className="login-p">
                 Do not have yet ?{" "}

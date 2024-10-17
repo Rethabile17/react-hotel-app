@@ -1,0 +1,29 @@
+.rate{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    gap: 5rem;
+}
+
+.rate-page{
+    display: flex;
+    gap: 5rem;
+
+}
+.rate-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgb(31, 17, 17);
+    height: 35rem;
+    width: 50rem;
+}
+
+.rate-image{
+    height: 10rem;
+    width: 10rem;
+
+}
