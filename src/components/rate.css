@@ -1,29 +1,41 @@
-.rate{ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh;
-    gap: 5rem;
+.rate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  gap: 5rem;
 }
 
-.rate-page{
-    display: flex;
-    gap: 5rem;
-
+.card-testimony {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  border-radius: 2rem;
 }
-.rate-images{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    background-color: rgb(31, 17, 17);
-    height: 35rem;
-    width: 50rem;
+
+.card-testimony:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+.rate-image {
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  width: 7rem;
+}
+
+.container{
+    padding: 2px 16px;
 }
 
 .rate-image{
-    height: 10rem;
-    width: 10rem;
+    width: 100%;
+    border-radius: none;    
+}
 
+.Reviews{
+    text-align: center;
+    padding-top: 5%;
+    color: #201719;
 }

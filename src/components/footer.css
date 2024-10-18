@@ -1,0 +1,13 @@
+.footer{
+    background-color: #201719;
+    width: 100%;
+    color: white;
+}
+
+.connect{
+    display: flex;
+}
+
+.logo{
+    height: 25vh;
+}

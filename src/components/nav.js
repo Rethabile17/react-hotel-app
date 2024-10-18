@@ -1,35 +1,49 @@
-import React from "react";
-import "./nav.css";
-import { Link } from "react-router-dom";
-import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-preview 2.png"
-
-function Nav() {
+import { useState } from 'react';
+import '../components/nav.css';
+const Nav = () => {
+  const [activeItem, setActiveItem] = useState('Home'); // Set 'Home' as default active item
+  const handleMenuClick = (item) => {
+    setActiveItem(item); // Update active item when clicked
+  };
   return (
-    <div class="nav">
-      <div className="navbar">
-        <div>
-          <img className="hotel-logo" src={logo} alt="Hotel Logo Image" />
-        </div>
-        <div>
-          <ul className="navigation">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/rooms">Rooms</Link>
-            </li>
-          
-          </ul>
-        </div>
-        <div>
-          <button className="logout-btn">Logout</button>
-        </div>
+    <div className="nav-container">
+      <div>
+        <h1>Logo</h1>
       </div>
+      <ul>
+        <li
+          className={activeItem === 'Home' ? 'active' : ''}
+          onClick={() => handleMenuClick('Home')}
+        >
+          Home
+        </li>
+        <li
+          className={activeItem === 'About' ? 'active' : ''}
+          onClick={() => handleMenuClick('About')}
+        >
+          About
+        </li>
+        <li
+          className={activeItem === 'Services' ? 'active' : ''}
+          onClick={() => handleMenuClick('Services')}
+        >
+          Services
+        </li>
+        <li
+          className={activeItem === 'Contact' ? 'active' : ''}
+          onClick={() => handleMenuClick('Contact')}
+        >
+          Contact
+        </li>
+        <li
+          className={activeItem === 'Blog' ? 'active' : ''}
+          onClick={() => handleMenuClick('Blog')}
+        >
+          Blog
+        </li>
+      </ul>
     </div>
   );
-}
+};
 
 export default Nav;

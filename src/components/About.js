@@ -3,11 +3,16 @@ import Hotel from "../images/98827f1c13da20e9455fcc69afa91eb7.jpg";
 import "./About.css";
 function About() {
   return (
+
+    <>
+
+ 
     <div className="about">
         <div>
         <img className="about-imag" src={Hotel} />   
         </div>
       <div>
+      <h1 style={{textAlign:"center", paddingTop:"3%" , color:"#201719"}}>About us </h1>
       <p className="about-p">
         Nestled in the heart of downtown, Hotel Serenity offers a tranquil 
         escape from the city's hustle and bustle. This elegant boutique hotel 
@@ -21,6 +26,7 @@ function About() {
       </p>
       </div>
     </div>
+    </>
   );
 }
 

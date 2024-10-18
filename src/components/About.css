@@ -8,12 +8,13 @@
 
 
 .about-imag{
-    height: 18rem;
+   
     width: 30rem;
 }
 
 .about-p{
-    height: 25rem;
+   
     width: 45rem;
-    color: whitesmoke;
+    color: black;
+    padding-top: 3%;
 }

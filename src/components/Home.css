@@ -1,7 +1,4 @@
 
-*{
-  color: whitesmoke
-}
 
 .home-page {
   display: flex;
@@ -43,6 +40,12 @@
 
 .book-now-btn:hover {
   background-color: #d18e00; 
+}
+
+
+.facility-p{
+  max-width: 800px;
+  min-width: 100px;
 }
 
 @media screen and (max-width: 768px) {

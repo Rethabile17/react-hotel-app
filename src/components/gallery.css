@@ -40,3 +40,8 @@
 .sites-image:hover img {
     transform: scale(1.1);
 }
+
+.gallery-p{
+  
+    text-align: center;
+}

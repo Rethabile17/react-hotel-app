@@ -12,6 +12,11 @@ import "./gallery.css";
 function Sites() {
   
   return (
+
+    <>
+
+    <h1 style={{textAlign:"center" , color:"#201719"}}>Gallery</h1>
+    <p className="gallery-p">Explore the beauty and charm of our hotel through our curated photo gallery. From elegant rooms and serene pools to vibrant dining spaces and stunning views, get a glimpse of the exceptional experiences that await you.</p>
     <div className="Sites">
          
     <div className="gallery">
@@ -57,6 +62,8 @@ function Sites() {
     </div>
   
     </div>
+
+    </>
   );
 }
 

@@ -45,6 +45,7 @@ function App() {
         <Route path="userprofile" element={<UseProfile/>} />
         <Route path="/servicerDetails" element={<ServicerDetails/>} />
         <Route path="/rate" element={<Rate/>} />
+        
       </Routes>
       </BrowserRouter>
       </PayPalScriptProvider>

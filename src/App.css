@@ -6,7 +6,14 @@
 html, body {
   height: 100%;
   font-family: sans-serif;
-  background-color: #312427;
+  background-color: whitesmoke;
+  columns: black;
+}
+
+.container {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: column;
 }
 
 a {
