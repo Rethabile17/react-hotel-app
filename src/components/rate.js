@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Oberoi from "../images/family.png";
 import Kanye from "../images/05-12-21-happy-people.png";
 import Johnny from "../images/depositphotos_25350645-Happy-Couple.png";
@@ -22,17 +22,35 @@ const StarRating = ({ rating }) => {
 };
 
 function Rate() {
+    const [showForm, setShowForm] = useState(false); // Form visibility
+    const [name, setName] = useState("");
+    const [review, setReview] = useState("");
+    const [rating, setRating] = useState(0);
+  
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+      console.log("New Review Submitted:", { name, review, rating });
+      // Reset form and hide it after submission
+      setName("");
+      setReview("");
+      setRating(0);
+      setShowForm(false);
+    };
+
     return (
 
       <div>
         <h1 className="Reviews">Reviews</h1>
         <div className="rate">
             <div className="card-testimony">
-                <img className="rate-image" src={Oberoi} alt="The Oberoi family" />
-                <div className="container">
-                    <h4>
-                        <b>The Oberoi family</b>
-                    </h4>
+                <div className="top-rating">
+                    <img className="rate-image" src={Oberoi} alt="The Oberoi family" />
+                                   <h4>
+                            <b>The Oberoi family</b>
+                        </h4>
+                </div>
+                    <div className="container">
+                    
                     <p>
                         "My family and I had an amazing stay at this hotel. The warm
                         hospitality, comfortable accommodations, and excellent amenities
@@ -45,11 +63,13 @@ function Rate() {
             </div>
 
             <div className="card-testimony">
-                <img className="rate-image" src={Kanye} alt="Kanye" />
+            <div className="top-rating">
+                    <img className="rate-image" src={Kanye} alt="The Oberoi family" />
+                                   <h4>
+                            <b>Khanya</b>
+                        </h4>
+                </div>
                 <div className="container">
-                    <h4>
-                        <b>Kanye</b>
-                    </h4>
                     <p>
                         "This hotel is on another level! The energy here is unmatched, and
                         the service is phenomenal. From the luxurious rooms to the
@@ -62,11 +82,14 @@ function Rate() {
             </div>
 
             <div className="card-testimony">
-                <img className="rate-image" src={Johnny} alt="Johnny & Mia" />
+            <div className="top-rating">
+                    <img className="rate-image" src={Johnny} alt="The Oberoi family" />
+                                   <h4>
+                            <b>Johnny and Mie</b>
+                        </h4>
+                </div>
                 <div className="container">
-                    <h4>
-                        <b>Johnny & Mia</b>
-                    </h4>
+              
                     <p>
                         "Johnny and I had a lovely honeymoon at this hotel. The romantic
                         atmosphere and attentive service made our stay special. While there
@@ -80,11 +103,14 @@ function Rate() {
             </div>
 
             <div className="card-testimony">
-                <img className="rate-image" src={Akira} alt="Akira" />
+              
+            <div className="top-rating">
+                    <img className="rate-image" src={Akira} alt="The Oberoi family" />
+                                   <h4>
+                            <b>Akira</b>
+                        </h4>
+                </div>
                 <div className="container">
-                    <h4>
-                        <b>Akira</b>
-                    </h4>
                     <p>
                         "I had a wonderful stay at this hotel and would give it 4.5 stars! The
                         amenities exceeded my expectations. I also enjoyed the delicious
@@ -96,6 +122,53 @@ function Rate() {
                     <StarRating rating={4.5} />
                 </div>
             </div>
+        </div>
+        {showForm && (
+          <form onSubmit={handleFormSubmit} className="review-form">
+            <h5>Give us your review so that we can improve your stay</h5>
+            <div>
+              <label>
+                Name:
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Review:
+                <textarea
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Rating:
+                <input
+                  type="number"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                  min="1"
+                  max="5"
+                  required
+                />
+              </label>
+            </div>
+            <button type="submit">Submit Review</button>
+          </form>
+        )}
+
+        {/* Add Review Button */}
+        <div className="form-container">
+          <button className="form-button" onClick={() => setShowForm(true)}>
+            Add Review
+          </button>
         </div>
         </div>
     );

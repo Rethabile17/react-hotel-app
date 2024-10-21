@@ -36,7 +36,7 @@ function Forgot() {
         <div className="forgot-half1">
           <div className="forgot-half1-top">
           <div>
-              <img src={logo} />
+              <img src={logo} className="auth-logo"/>
             </div>
             
             <h1>Forgot password</h1>

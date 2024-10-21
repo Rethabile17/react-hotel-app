@@ -2,12 +2,31 @@
     background-color: #201719;
     width: 100%;
     color: white;
+    padding: 2rem 4rem;
 }
 
-.connect{
+
+.top-footer{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo{
-    height: 25vh;
+.footer-img{
+    width: 20%;
+    aspect-ratio: 1/.5;
+}
+
+.footer-links{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+a{
+    font-size: 1.25rem;
+    margin: 0 .2rem;
+}
+a:hover{
+    color: gold;
 }

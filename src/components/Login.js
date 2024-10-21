@@ -45,7 +45,7 @@ const handleForgot =() =>{
           <div className="login-page-half1-top">
 
           <div>
-              <img src={logo} />
+              <img src={logo}  className="auth-logo"/>
             </div>
             <h1  style={{paddingTop:"5%"}}> Welcome Back</h1>
           </div>

@@ -92,3 +92,9 @@
     cursor: pointer;
     color: #E07851;
   }
+
+  .auth-logo{
+    width: 150px;
+    min-height: 150px;
+    padding-bottom: 5rem;
+  }

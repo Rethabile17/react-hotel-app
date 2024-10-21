@@ -39,7 +39,7 @@ function Register() {
         <div className="register-half1">
           <div className="register-half1-top">
           <div>
-              <img src={logo} />
+              <img src={logo} className="auth-logo"/>
             </div>
             <h1>Welcome Back</h1>
           </div>

@@ -56,8 +56,13 @@ function Sites() {
         <img className="sites-image" src={Flying} />
         </div>
        
-        
+        <div>
+        <img className="sites-image" src="https://colossal-caracara.transforms.svdcdn.com/staging/blog/hotel-activities.jpg?w=2880&h=1168&auto=compress%2Cformat&fit=crop&dm=1683894539&s=35661edbcfeab60623d44fa7816480d9" />
+        </div>
 
+        <div>
+        <img className="sites-image" src="https://www.thealexhotel.ie/wp-content/uploads/sites/4/2018/02/shutterstock_646581520.jpg" />
+        </div>
       
     </div>
   

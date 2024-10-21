@@ -51,7 +51,7 @@ function RoomDetails() {
     navigate("/checkoutDetails", {
       state: {
         room,
-        roomType: room.roomType, // Make sure to pass the roomType
+        roomType: room.roomType,
         arrivalDate,
         leaveDate,
         totalPrice,
@@ -61,9 +61,11 @@ function RoomDetails() {
 
   return (
     <div className="roomDetails">
+       <p className="room-name-description">{room.roomType}</p>
       <div className="roomDetails-page">
+     
         <div className="roomDetails-top">
-        <div>
+        {/* <div>
            
             <TwitterShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
               <TwitterIcon size={32} round />
@@ -77,11 +79,11 @@ function RoomDetails() {
               <FacebookIcon size={32} round />
             </FacebookShareButton>
             
-          </div>
-          <div className="like">
+          </div> */}
+          {/* <div className="like">
             <button><img className="heart" src={Heart} /></button>
-          </div>
-          <div>
+          </div> */}
+          <div className="first-img">
             <img src={view1} alt="" className="view1" />
           </div>
           <div className="roomDetails-views">
@@ -91,13 +93,12 @@ function RoomDetails() {
         </div>
 
         <div className="roomDetails-down">
-          <div>
-            <p>{room.description}</p>
+            <p className="description-detail">{room.description}</p>
             <div className="roomDetails-down-page">
-              <p>{room.roomType}</p>
-              <p>{room.roomNumber}</p>
-              <p>R{room.price} per night</p>
-              <p>only {room.guest} can stay in this room</p>
+             
+              <h4>Room Number: {room.roomNumber}</h4>
+              <h4>R{room.price} per night</h4>
+              <h4>{room.guest} Guest allowed</h4>
               
               <input
                 className="roomDetail-input"
@@ -124,7 +125,6 @@ function RoomDetails() {
                 </button>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

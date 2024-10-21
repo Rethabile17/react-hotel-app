@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
-  gap: 5rem;
+  height: 50vh;
+  gap: 2rem;
 }
 
 .card-testimony {
@@ -21,21 +21,94 @@
 .rate-image {
   display: flex;
   justify-content: center;
-  height: 20vh;
-  width: 7rem;
+ 
 }
 
 .container{
     padding: 2px 16px;
 }
+.top-rating{
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-bottom: 1px solid #201719;
+  padding: .2rem ;
+  width: 98%;
+  margin: 0 auto;
+}
 
 .rate-image{
-    width: 100%;
-    border-radius: none;    
+    width: 100px;
+    aspect-ratio: 1/1; 
+    border-radius: 50%;
+
 }
 
 .Reviews{
     text-align: center;
     padding-top: 5%;
     color: #201719;
+}
+
+.container p {
+  height: 100px; /* Fixed height for uniformity */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+  white-space: normal; /* Wrap text */
+  line-height: 1.5;
+  font-size: 16px;
+  color: rgb(83, 83, 83);
+}
+
+.container p:hover {
+  overflow: auto; /* Allow scrolling when hovering */
+}
+.form-button{
+  margin: 0 auto;
+  padding: .8rem 2rem ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #201719;
+  color: whitesmoke;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin: 0 auto;
+  background-color: #201719;
+  border-radius: 1rem;
+  padding: 2rem 0;
+  color: whitesmoke;
+  gap: .6rem;
+}
+
+form h5{
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+button[type="submit"]{
+  margin: 0 auto;
+  padding: .8rem 2rem ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+input, textarea{
+  width: 90%;
+  padding: .6rem 1rem ;
+  border-radius: .6rem;
+}
+
+textarea{
+  height: 150px;
 }

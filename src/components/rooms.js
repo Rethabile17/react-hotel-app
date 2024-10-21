@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Single from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import { fetchData } from "../redux/dbSlice";
 import "./rooms.css";
+import Footer from "./footer";
 
 function Rooms() {
   const Navigate = useNavigate();
@@ -30,28 +31,35 @@ function Rooms() {
   };
 
   return (
-    <div className="room">
-      {data.map((room, index) => (
-        <div className="room-page" key={index}>
-          <div className="room-head">
-            <div>
-              <img
-                className="room-top"
-                src={Single}
-                alt={`Room ${room.roomNumber}`}
-                onClick={() => imgButton(room)} // Fix here
-              />
-            </div>
-
-            <div className="room-down">
-              <p>Room No: {room.roomNumber}</p>
-              <p>{room.roomType}</p>
-              <p>Floor: upstart</p>
-              <p>Price: R{room.price}</p>
+    <div>
+      <h1 className="room-header">Rooms</h1>
+      <p className="room-text">
+        Step into luxury and unwind in style. Our spacious rooms, premium
+        amenities, and attentive service ensure a restful night and a refreshing
+        morning. Discover the perfect blend of comfort and elegance.
+      </p>
+      <div className="room">
+        {data.map((room, index) => (
+          <div className="room-page" key={index}>
+            <div className="room-head">
+              <div>
+                <img
+                  className="room-top"
+                  src={Single}
+                  alt={`Room ${room.roomNumber}`}
+                  onClick={() => imgButton(room)} // Fix here
+                />
+              </div>
+              <div className="room-down">
+                <p className="room-name">{room.roomType}</p>
+                <p>Room No: {room.roomNumber}</p>
+                <p className="room-price">Price: R{room.price}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <Footer/>
     </div>
   );
 }
