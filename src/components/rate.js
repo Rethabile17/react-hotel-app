@@ -6,6 +6,10 @@ import Akira from "../images/Happiest+person+in+the+world.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'; // Import the star icon
 import "./rate.css";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
 
 const StarRating = ({ rating }) => {
     return (
@@ -26,7 +30,10 @@ function Rate() {
     const [name, setName] = useState("");
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
-  
+    const navigate = useNavigate();
+      
+  const {user} = useSelector((state) => state.auth)
+
     const handleFormSubmit = (e) => {
       e.preventDefault();
       console.log("New Review Submitted:", { name, review, rating });
@@ -166,7 +173,13 @@ function Rate() {
 
         {/* Add Review Button */}
         <div className="form-container">
-          <button className="form-button" onClick={() => setShowForm(true)}>
+          <button className="form-button" onClick={() => {
+            if (!user) {
+              alert("To add review please Login");
+              navigate("/");
+              return;
+            }
+            setShowForm(true)}}>
             Add Review
           </button>
         </div>

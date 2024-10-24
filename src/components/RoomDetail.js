@@ -4,6 +4,7 @@ import view1 from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import view2 from "../images/Plank-Slider-2.jpg";
 import view3 from "../images/prado_luxury_hotel_room_standard_family_inner_view.png";
 import "./roomDetails.css"
+import { useSelector } from "react-redux";
 
 function RoomDetails() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ function RoomDetails() {
   const [leaveDate, setLeaveDate] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
   
+  const {user} = useSelector((state) => state.auth)
 
   const calculateStayTime = (arrivalDate, leaveDate) => {
     const ArrivalDate = new Date(arrivalDate);
@@ -46,6 +48,13 @@ function RoomDetails() {
   }, [arrivalDate, leaveDate]);
 
   const imgButton = () => {
+
+if (!user) {
+  alert("Please login first to book this room");
+  navigate("/");
+  return;
+}
+
     navigate("/checkoutDetails", {
       state: {
         room,
