@@ -3,9 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import view1 from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import view2 from "../images/Plank-Slider-2.jpg";
 import view3 from "../images/prado_luxury_hotel_room_standard_family_inner_view.png";
-import Heart from "../images/heart_6338857.png";
-import "./roomDetails.css";
-import { TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon , FacebookShareButton,FacebookIcon } from 'react-share';
+import "./roomDetails.css"
 
 function RoomDetails() {
   const navigate = useNavigate();
@@ -65,24 +63,6 @@ function RoomDetails() {
       <div className="roomDetails-page">
      
         <div className="roomDetails-top">
-        {/* <div>
-           
-            <TwitterShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-
-            <LinkedinShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
-
-            <FacebookShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            
-          </div> */}
-          {/* <div className="like">
-            <button><img className="heart" src={Heart} /></button>
-          </div> */}
           <div className="first-img">
             <img src={view1} alt="" className="view1" />
           </div>

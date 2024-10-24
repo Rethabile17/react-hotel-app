@@ -28,14 +28,13 @@ const handleForgot =() =>{
   useEffect(() => {
     if (user) {
       alert("login successful");
-      navigate("/");
+      navigate("/home");
     }
   }, [user, navigate]);
 
   const loginBtn = () => {
     dispatch(signIn({ email, password }));
 
-    // Navigate('/home')
   };
 
   return (

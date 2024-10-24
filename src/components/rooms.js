@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Single from "../images/6f7235447ca2c37edf7df110269d363b.png";
 import { fetchData } from "../redux/dbSlice";
+import { TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon , FacebookShareButton,FacebookIcon } from 'react-share';
+import Heart from "../images/heart_6338857.png";
 import "./rooms.css";
 import Footer from "./footer";
 
@@ -55,6 +57,24 @@ function Rooms() {
                 <p>Room No: {room.roomNumber}</p>
                 <p className="room-price">Price: R{room.price}</p>
               </div>
+               {/* <div>
+           
+            <TwitterShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+
+            <LinkedinShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+
+            <FacebookShareButton url={shareUrl} title={`Check out this room: ${room.roomType}, Price: R${room.price}, Arrival: ${arrivalDate}, Leave: ${leaveDate}`}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            
+          </div> */}
+          {/* <div className="like">
+            <button><img className="heart" src={Heart} /></button>
+          </div> */}
             </div>
           </div>
         ))}

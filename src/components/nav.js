@@ -1,10 +1,28 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../components/nav.css';
+
 const Nav = () => {
   const [activeItem, setActiveItem] = useState('Home'); // Set 'Home' as default active item
   const handleMenuClick = (item) => {
     setActiveItem(item); // Update active item when clicked
   };
+
+  const navigate = useNavigate();
+
+
+  const handleNav = () =>{
+    navigate("/userprofile")
+  }
+
+  const handleAbout = () =>{
+    navigate("/about")
+  }
+
+  const handleServicer = () =>{
+    navigate("/servicerDetails")
+  }
+  
   return (
     <div className="nav-container">
       <div>
@@ -19,13 +37,17 @@ const Nav = () => {
         </li>
         <li
           className={activeItem === 'About' ? 'active' : ''}
-          onClick={() => handleMenuClick('About')}
+          onClick={() =>{
+            handleAbout() 
+           handleMenuClick('About')}}
         >
           About
         </li>
         <li
           className={activeItem === 'Services' ? 'active' : ''}
-          onClick={() => handleMenuClick('Services')}
+          onClick={() =>{
+            handleServicer()
+           handleMenuClick('Services')}}
         >
           Services
         </li>
@@ -36,10 +58,19 @@ const Nav = () => {
           Contact
         </li>
         <li
-          className={activeItem === 'Blog' ? 'active' : ''}
-          onClick={() => handleMenuClick('Blog')}
+          className={activeItem === 'UserProfile' ? 'active' : ''}
+          onClick={() =>{ 
+            handleNav()
+            handleMenuClick('UserProfile')}}
         >
-          Blog
+          UserProfile
+        </li>
+        <li
+          className={activeItem === 'Logout' ? 'active' : ''}
+          onClick={() => handleMenuClick('Logout')}
+
+        >
+          Logout
         </li>
       </ul>
     </div>

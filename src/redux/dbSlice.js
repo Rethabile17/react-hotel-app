@@ -1,7 +1,9 @@
 import { async } from "@firebase/util";
 import { createSlice } from '@reduxjs/toolkit';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
-import { db } from '../configure/firebase'; // Firestore config
+import { getDocs, collection, addDoc, doc, getDoc } from 'firebase/firestore';
+import { db, auth } from '../configure/firebase'; // Firestore config
+import { useId } from "react";
+import { setUser } from "./authSlice";
 
 const initialState = {
   data: [],
@@ -108,6 +110,20 @@ export const addRooms = ({fullName, email, roomType, arrivalDate, leaveDate,  to
     });
     console.log("Document written with ID: ", docRef.id);
     dispatch(addBookingToState({ id: docRef.id, ...bookingData }));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
+
+export const fetchUser = (uid) => async (dispatch) => {
+  dispatch(setLoading());
+  try {
+    const querySnapshot = await getDocs(collection(db, "users", uid, "profile"));
+    const data = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    dispatch(setData(data));
   } catch (error) {
     dispatch(setError(error.message));
   }

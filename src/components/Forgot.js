@@ -27,9 +27,6 @@ function Forgot() {
     
   };
 
- 
-
-
     return (
       <div className="forgot">
       <div className="forgot-page">
