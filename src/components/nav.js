@@ -19,6 +19,10 @@ const Nav = () => {
     navigate("/about")
   }
 
+  const handleLogout = () =>{
+    navigate("/")
+  }
+
   const handleServicer = () =>{
     navigate("/servicerDetails")
   }
@@ -66,8 +70,10 @@ const Nav = () => {
           UserProfile
         </li>
         <li
-          className={activeItem === 'Logout' ? 'active' : ''}
-          onClick={() => handleMenuClick('Logout')}
+          className={activeItem === '/' ? 'active' : ''}
+          onClick={() =>{
+            handleLogout()
+            handleMenuClick('/')}}
 
         >
           Logout

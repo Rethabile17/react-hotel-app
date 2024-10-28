@@ -1,170 +1,149 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addRooms } from "../redux/dbSlice";
-import { addDoc, collection, getDocs } from "firebase/firestore"; // Import getDocs for fetching bookings
+import { addRooms} from "../redux/dbSlice"; // Import userLogout action
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../configure/firebase";
+import { userLogout } from "../redux/authSlice"
 import "./admin.css";
+import { useNavigate } from "react-router-dom"; 
 
 function Admin() {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // State for booking inputs and bookings list
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+  const [viewMode, setViewMode] = useState("addRoom"); // "addRoom" or "viewBookings"
   const [roomType, setRoomType] = useState("");
-  const [arrivalDate, setArrivalDate] = useState("");
-  const [leaveDate, setLeaveDate] = useState("");
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [bookings, setBookings] = useState([]); // State for storing fetched bookings
-
-  // Calculate total price based on stay duration
-  const calculateStayTime = (arrivalDate, leaveDate) => {
-    const ArrivalDate = new Date(arrivalDate);
-    const LeaveDate = new Date(leaveDate);
-    const DiffTime = Math.abs(LeaveDate - ArrivalDate);
-    return Math.ceil(DiffTime / (1000 * 60 * 60 * 24));
-  };
-
-  const calculateTotalPrice = () => {
-    const dailyRate = 100; // Set a default rate or dynamically fetch this based on roomType
-    const amountOfDays = calculateStayTime(arrivalDate, leaveDate);
-    return dailyRate * amountOfDays;
-  };
+  const [price, setPrice] = useState("");
+  const [roomNumber, setRoomNumber] = useState("");
+  const [description, setDescription] = useState("");
+  const [guests, setGuests] = useState("");
+  const [bookings, setBookings] = useState([]);
 
   const handleAddBooking = async () => {
-    const price = calculateTotalPrice();
-    setTotalPrice(price);
-
     const bookingData = {
-      fullName,
-      email,
       roomType,
-      arrivalDate,
-      leaveDate,
-      totalPrice: price,
+      roomNumber,
+      price,
+      description,
+      guests,
     };
 
-    // Add booking to Firestore
     try {
       await addDoc(collection(db, "Room"), bookingData);
-      console.log("Booking added to Firestore");
-      dispatch(addRooms(bookingData)); // Add booking to Redux
-      fetchBookings(); // Fetch updated bookings after adding a new one
+      dispatch(addRooms(bookingData));
+      fetchBookings();
+      clearForm();
     } catch (error) {
       console.error("Error adding booking: ", error);
     }
   };
 
-  // Fetch bookings from Firestore
   const fetchBookings = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "bookings"));
+      const querySnapshot = await getDocs(collection(db, "Room"));
       const bookingsList = querySnapshot.docs.map((doc) => doc.data());
-      setBookings(bookingsList); // Update the bookings state
+      setBookings(bookingsList);
     } catch (error) {
       console.error("Error fetching bookings: ", error);
     }
   };
 
-  // Automatically fetch bookings when the component mounts
   useEffect(() => {
     fetchBookings();
-  }, []); // Only run on initial render
+  }, []);
+
+  const clearForm = () => {
+    setRoomType("");
+    setRoomNumber("");
+    setPrice("");
+    setDescription("");
+    setGuests("");
+  };
+
+  const toggleView = () => {
+    setViewMode(viewMode === "addRoom" ? "viewBookings" : "addRoom");
+  };
+
+  const handleLogout = () => {
+    dispatch(userLogout()); // Dispatch logout action
+    navigate("/"); // Navigate to home page after logout
+  };
 
   return (
     <div className="admin">
       <div className="admin-page">
-        <div className="admin-top">
-          <h1 className="admin-head">Booking List</h1>
+        <h1 className="admin-head">Hotel Admin Dashboard</h1>
+        <button className="toggle-view-button" onClick={toggleView}>
+          {viewMode === "addRoom" ? "View Bookings" : "Add Room"}
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
 
+        {viewMode === "addRoom" ? (
           <div className="admin-input">
-            <input
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-            <input
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
             <input
               placeholder="Room Type"
               value={roomType}
               onChange={(e) => setRoomType(e.target.value)}
             />
             <input
-              type="date"
-              placeholder="Arrival Date"
-              value={arrivalDate}
-              onChange={(e) => setArrivalDate(e.target.value)}
+              placeholder="Room Number"
+              value={roomNumber}
+              onChange={(e) => setRoomNumber(e.target.value)}
             />
             <input
-              type="date"
-              placeholder="Leave Date"
-              value={leaveDate}
-              onChange={(e) => setLeaveDate(e.target.value)}
+              placeholder="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Guests"
+              value={guests}
+              onChange={(e) => setGuests(e.target.value)}
+            />
+            <button className="admin-button" onClick={handleAddBooking}>
+              Add Room
+            </button>
           </div>
-
-          <div className="totalPrice">
-            <p>Total Price: R{totalPrice.toFixed(2)}</p>
-          </div>
-
-          <div className="admin-button-body">
-            <div>
-              <button className="admin-button" onClick={handleAddBooking}>
-                Add Booking
-              </button>
-            </div>
-
-            <div>
-              <button className="admin-button" onClick={fetchBookings}>
-                View Bookings
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Render fetched bookings */}
-        <div className="bookings-list">
-          <h2>Bookings</h2>
-          {bookings.length === 0 ? (
-            <p>No bookings available.</p>
-          ) : (
-            <table>
-              <thead >
-                <tr>
-                  <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Room Type</th>
-                  <th>Arrival Date</th>
-                  <th>Leave Date</th>
-                  <th>Total Price</th>
-                </tr>
-              </thead>
-              <tbody >
-                {bookings.map((booking, index) => (
-                  <tr key={index}>
-                    <td>{booking.fullName}</td>
-                    <td>{booking.email}</td>
-                    <td>{booking.roomType}</td>
-                    <td>{booking.arrivalDate}</td>
-                    <td>{booking.leaveDate}</td>
-                    {/* Ensure booking.totalPrice is valid before calling toFixed */}
-                    <td>
-                      R
-                      {typeof booking.totalPrice === "number" &&
-                      !isNaN(booking.totalPrice)
-                        ? booking.totalPrice.toFixed(2)
-                        : "0.00"}
-                    </td>
+        ) : (
+          <div className="bookings-list">
+            <h2>Bookings</h2>
+            {bookings.length === 0 ? (
+              <p>No bookings available.</p>
+            ) : (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Room Type</th>
+                    <th>Room Number</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Guests</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
+                </thead>
+                <tbody>
+                  {bookings.map((room, index) => (
+                    <tr key={index}>
+                      <td>{room.roomType}</td>
+                      <td>{room.roomNumber}</td>
+                      <td>{room.price}</td>
+                      <td>{room.description}</td>
+                      <td>{room.guests}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

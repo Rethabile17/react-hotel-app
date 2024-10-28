@@ -9,8 +9,9 @@ const initialState = {
   data: [],
   loading: false,
   error: null,
+  reviews : []
 };
-// Create Firestore data slice
+
 const dataSlice = createSlice({
   name: 'db',
   initialState,
@@ -28,23 +29,27 @@ const dataSlice = createSlice({
       state.loading = false;
     },
     addBookingToState(state, action) {
-      state.data.push(action.payload); // Add the new booking to the data array
+      state.data.push(action.payload); 
       state.loading = false;
+    },
+    setReviews (state, action){
+      state.reviews.push(action.payload)
+
     }
   },
 });
-export const { setLoading, setData, setError, addBookingToState } = dataSlice.actions;
+export const { setLoading, setData, setError, addBookingToState,  setReviews } = dataSlice.actions;
 export default dataSlice.reducer;
 
 export const fetchData = () => async (dispatch) => {
   dispatch(setLoading());
   try {
-    const querySnapshot = await getDocs(collection(db, "Room")); // Ensure "test" collection exists
+    const querySnapshot = await getDocs(collection(db, "Room")); 
     const data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    dispatch(setData(data)); // Dispatch data after fetching
+    dispatch(setData(data)); 
   } catch (error) {
     dispatch(setError(error.message));
   }
@@ -95,17 +100,17 @@ export const getBookings = () => async (dispatch) => {
   }
 };
 
-export const addRooms = ({fullName, email, roomType, arrivalDate, leaveDate,  totalPrice , bookingData}) => async (dispatch) => {
+export const addRooms = ({description, image, roomNumber, roomType, price, guests,   bookingData}) => async (dispatch) => {
   try {
     dispatch(setLoading());
     // Add a new document with a generated id.
     const docRef = await addDoc(collection(db, "Room"), {
-      fullName: fullName,
-      email:  email,
       roomType: roomType,
-      arrivalDate: arrivalDate,
-      leaveDate: leaveDate,
-      totalPrice:  totalPrice,
+      price:  price,
+      roomNumber: roomNumber,
+      description: description,
+      guests: guests,
+      image:  image,
       bookingData,
     });
     console.log("Document written with ID: ", docRef.id);
@@ -124,6 +129,23 @@ export const fetchUser = (uid) => async (dispatch) => {
       ...doc.data(),
     }));
     dispatch(setData(data));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
+
+
+export const addReview = (reviewData) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, "Reviews"), {
+      reviewData
+    });
+
+    alert("Review added successfully")
+    console.log("Document written with ID: ", docRef.id);
+    dispatch(addBookingToState(reviewData));
   } catch (error) {
     dispatch(setError(error.message));
   }

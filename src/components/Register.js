@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-preview 2.png";
-import google from "../images/Google (1).png";
-import apple from "../images/Apple Logo.png";
 import Image01 from "../images/city-background-panoramic-view.png";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";

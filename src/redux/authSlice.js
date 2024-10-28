@@ -4,8 +4,8 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
-import { db, auth  } from "../configure/firebase";
+import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { db, auth } from "../configure/firebase";
 
 const initialState = {
   user: null,
@@ -43,20 +43,28 @@ const authSlice = createSlice({
         state.user = JSON.parse(userData);
         state.logged = true;
       }
-    }
+    },
   },
 });
-export const { setLoading, setUser, setError, logout, initializeUser  } = authSlice.actions;
 
+export const { setLoading, setUser, setError, logout, initializeUser } = authSlice.actions;
+
+// Updated signUp function
 export const signUp = ({ email, password, fullName }) => async (dispatch) => {
   dispatch(setLoading());
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const docRef = await addDoc(collection(db, "users", userCredential.user.uid, "profile"), {
+    
+    // Create a document reference for the user's profile
+    const profileRef = doc(db, "users", userCredential.user.uid); // Reference the user document
+    
+    // Set user profile data in the user's document
+    await setDoc(profileRef, {
       fullName,
       email,
       role: "client",
     });
+    
     dispatch(setUser({ uid: userCredential.user.uid, email }));
   } catch (error) {
     dispatch(setError(error.message));
@@ -72,24 +80,38 @@ export const resetPassword = ({ email }) => async (dispatch) => {
   }
 };
 
-  export const signIn = ({ email, password }) => async (dispatch) => {
-    dispatch(setLoading());
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      dispatch(setUser({ uid: userCredential.user.uid, email: userCredential.user.email }));
-    } catch (error) {
-      dispatch(setError(error.message));
-    }
-  };
+export const signIn = ({ email, password }) => async (dispatch) => {
+  dispatch(setLoading());
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-  export const userLogout = () => async (dispatch) => {
-    try {
-      await auth.signOut();
-      dispatch(logout());
-      alert("You have been logged out successfully.")
-    } catch (error) {
-      console.error("Error signing out:", error.message);
+    // Fetch user role directly from the users collection
+    const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+    
+    // Check if the user document exists
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      dispatch(setUser({
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        role: userData.role // Assuming 'role' is a field in the users collection
+      }));
+    } else {
+      dispatch(setError("User not found."));
     }
-  };
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
+
+export const userLogout = () => async (dispatch) => {
+  try {
+    await auth.signOut();
+    dispatch(logout());
+    alert("You have been logged out successfully.");
+  } catch (error) {
+    console.error("Error signing out:", error.message);
+  }
+};
 
 export default authSlice.reducer;

@@ -25,12 +25,17 @@ const handleForgot =() =>{
   navigate('/Forgot')
 }
 
-  useEffect(() => {
-    if (user) {
-      alert("login successful");
+useEffect(() => {
+  if (user) {
+    alert("login successful");
+    if (user.role === "admin") {
+      navigate("/admin");
+    } else {
       navigate("/home");
     }
-  }, [user, navigate]);
+  }
+}, [user, navigate]);
+
 
   const loginBtn = () => {
     dispatch(signIn({ email, password }));

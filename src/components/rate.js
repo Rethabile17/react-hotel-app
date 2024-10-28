@@ -7,11 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'; // Import the star icon
 import "./rate.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+
+import {addReview } from '../redux/dbSlice'
+import { useSelector, useDispatch } from "react-redux";
 
 
 
 const StarRating = ({ rating }) => {
+
+
     return (
         <div className="star-rating">
             {Array.from({ length: 5 }, (_, index) => (
@@ -26,6 +30,7 @@ const StarRating = ({ rating }) => {
 };
 
 function Rate() {
+  const dispatch = useDispatch();
     const [showForm, setShowForm] = useState(false); // Form visibility
     const [name, setName] = useState("");
     const [review, setReview] = useState("");
@@ -44,6 +49,16 @@ function Rate() {
       setShowForm(false);
     };
 
+
+    const addClientReview = (()=>{
+      alert("clicked")
+      dispatch(addReview({
+        rating,
+        name,
+        review
+      }))
+
+    })
     return (
 
       <div>
@@ -131,14 +146,14 @@ function Rate() {
             </div>
         </div>
         {showForm && (
-          <form onSubmit={handleFormSubmit} className="review-form">
+          <div className="review-form">
             <h5>Give us your review so that we can improve your stay</h5>
             <div>
               <label>
                 Name:
                 <input
                   type="text"
-                  value={name}
+                 
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
@@ -148,7 +163,7 @@ function Rate() {
               <label>
                 Review:
                 <textarea
-                  value={review}
+              
                   onChange={(e) => setReview(e.target.value)}
                   required
                 />
@@ -159,7 +174,7 @@ function Rate() {
                 Rating:
                 <input
                   type="number"
-                  value={rating}
+                 
                   onChange={(e) => setRating(e.target.value)}
                   min="1"
                   max="5"
@@ -167,8 +182,8 @@ function Rate() {
                 />
               </label>
             </div>
-            <button type="submit">Submit Review</button>
-          </form>
+            <button type="submit" onClick={addClientReview}>Submit Review</button>
+          </div>
         )}
 
         {/* Add Review Button */}

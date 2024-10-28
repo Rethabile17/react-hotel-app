@@ -16,14 +16,15 @@ function UserProfile() {
     }
   }, [dispatch, user]);
 
+
   const  ProfileButton = () => {
     Navigate("/", {
-      state: {  },
+      state: { },
     });
   };
 
   const userDetails = data.length > 0 ? data[0] : {
-    fullName: "Name",
+    fullName: user?.fullName || "Name",
     email: user?.email || "User@gmail.com",
   };
 
