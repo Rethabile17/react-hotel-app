@@ -95,9 +95,9 @@
   border-radius: 1.5rem;
 }
 
-/* Media Queries */
+
 @media (max-width: 1024px) {
-  /* Tablet view */
+
   .register-page {
     width: 90%;
     height: 80%;
@@ -127,7 +127,7 @@
 }
 
 @media (max-width: 768px) {
-  /* Smartphone view (portrait) */
+
   .register-page {
     flex-direction: column;
     width: 90%;
@@ -164,7 +164,6 @@
 }
 
 @media (max-width: 480px) {
-  /* Small smartphone view */
   .register-half1-bottom-input, .register-button {
     width: 85%;
     font-size: 0.9rem;

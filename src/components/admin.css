@@ -1,4 +1,4 @@
-/* Main container styling */
+
 .admin {
   display: flex;
   justify-content: center;
@@ -7,24 +7,24 @@
   width: 100%;
   min-height: 100vh;
   color: #333;
-  padding: 1rem; /* Add padding for small screens */
+  padding: 1rem; 
 }
 
-/* Admin page styling */
+
 .admin-page {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%; /* Use full width for responsiveness */
+  width: 100%; 
   max-width: 1200px;
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 1rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto; 
 }
 
-/* Dashboard heading */
+
 .admin-head {
   text-align: center;
   color: #d18e00; 
@@ -33,21 +33,20 @@
   margin-bottom: 1.5rem;
 }
 
-/* Input area styling */
 .admin-input {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-/* Input and Textarea styling */
+
 .admin-input input,
 .admin-input textarea {
   padding: 0.75rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;
-  width: 100%; /* Full width */
+  width: 100%; 
   background-color: #fafafa;
   color: #333;
 }
@@ -57,7 +56,7 @@ textarea {
   min-height: 100px;
 }
 
-/* Buttons styling */
+
 .admin-button-body {
   display: flex;
   gap: 1rem;
@@ -74,19 +73,19 @@ textarea {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  flex: 1; /* Allow button to grow */
+  flex: 1; 
 }
 
 .admin-button:hover {
-  background-color: #c48b00; /* Slightly darker on hover */
+  background-color: #c48b00; 
 }
 
-/* Bookings list */
+
 .bookings-list {
   margin-top: 2rem;
   border-top: 2px solid #d18e00; 
   padding-top: 1rem;
-  overflow-x: auto; /* Make the list scrollable */
+  overflow-x: auto; 
 }
 
 .bookings-list h2 {
@@ -97,7 +96,7 @@ textarea {
   font-weight: 600;
 }
 
-/* Table styling */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -128,7 +127,7 @@ tr:hover {
   background-color: #e0f2f1;
 }
 
-/* Toggle view button styling */
+
 .toggle-view-button {
   background-color: #d18e00; 
   color: white;
@@ -145,49 +144,49 @@ tr:hover {
   background-color: #c48b00; 
 }
 
-/* Logout button styling */
+
 .logout-button {
-  background-color: #ff7809; /* Red color for logout */
+  background-color: #ff7809;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
   font-weight: bold;
-  margin: 1rem 0; /* Add margin for spacing */
+  margin: 1rem 0; 
   transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b; 
 }
 
-/* Media queries for responsiveness */
+
 @media (max-width: 768px) {
   .admin-head {
-    font-size: 1.8rem; /* Reduce heading size on small screens */
+    font-size: 1.8rem; 
   }
 
   .admin-input {
-    grid-template-columns: 1fr; /* Stack inputs on small screens */
+    grid-template-columns: 1fr;
   }
 
   .admin-button {
-    padding: 0.8rem 1rem; /* Adjust button padding */
+    padding: 0.8rem 1rem;
   }
 
   .toggle-view-button,
   .logout-button {
-    width: 100%; /* Full width on small screens */
+    width: 100%; 
   }
 }
 
 @media (max-width: 480px) {
   .admin-head {
-    font-size: 1.6rem; /* Further reduce heading size */
+    font-size: 1.6rem; 
   }
 
   .admin-page {
-    padding: 1rem; /* Reduce padding on small devices */
+    padding: 1rem; 
   }
 }

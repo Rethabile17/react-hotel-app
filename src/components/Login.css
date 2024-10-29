@@ -128,7 +128,7 @@
 }
 
 @media (max-width: 768px) {
-  /* Smartphone view (portrait) */
+
   .login-page {
     flex-direction: column;
     width: 90%;
@@ -165,7 +165,7 @@
 }
 
 @media (max-width: 480px) {
-  /* Small smartphone view */
+
   .login-page-half1-bottom-input, .login-button {
     width: 85%;
     font-size: 0.9rem;

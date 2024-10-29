@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addRooms} from "../redux/dbSlice"; // Import userLogout action
+import { addRooms} from "../redux/dbSlice"; 
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../configure/firebase";
 import { userLogout } from "../redux/authSlice"
@@ -9,10 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 function Admin() {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
-  // State for booking inputs and bookings list
-  const [viewMode, setViewMode] = useState("addRoom"); // "addRoom" or "viewBookings"
+  
+  const [viewMode, setViewMode] = useState("addRoom");
   const [roomType, setRoomType] = useState("");
   const [price, setPrice] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
@@ -66,8 +66,8 @@ function Admin() {
   };
 
   const handleLogout = () => {
-    dispatch(userLogout()); // Dispatch logout action
-    navigate("/"); // Navigate to home page after logout
+    dispatch(userLogout()); 
+    navigate("/"); 
   };
 
   return (

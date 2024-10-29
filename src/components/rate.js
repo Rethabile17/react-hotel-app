@@ -4,7 +4,7 @@ import Kanye from "../images/05-12-21-happy-people.png";
 import Johnny from "../images/depositphotos_25350645-Happy-Couple.png";
 import Akira from "../images/Happiest+person+in+the+world.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons'; // Import the star icon
+import { faStar } from '@fortawesome/free-solid-svg-icons'; 
 import "./rate.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const StarRating = ({ rating }) => {
                 <FontAwesomeIcon 
                     key={index} 
                     icon={faStar} 
-                    color={index < rating ? "#FFD700" : "#D3D3D3"} // Gold for filled stars, light grey for empty stars
+                    color={index < rating ? "#FFD700" : "#D3D3D3"} 
                 />
             ))}
         </div>
@@ -31,7 +31,7 @@ const StarRating = ({ rating }) => {
 
 function Rate() {
   const dispatch = useDispatch();
-    const [showForm, setShowForm] = useState(false); // Form visibility
+    const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState("");
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
@@ -42,7 +42,7 @@ function Rate() {
     const handleFormSubmit = (e) => {
       e.preventDefault();
       console.log("New Review Submitted:", { name, review, rating });
-      // Reset form and hide it after submission
+      
       setName("");
       setReview("");
       setRating(0);
@@ -186,7 +186,7 @@ function Rate() {
           </div>
         )}
 
-        {/* Add Review Button */}
+
         <div className="form-container">
           <button className="form-button" onClick={() => {
             if (!user) {

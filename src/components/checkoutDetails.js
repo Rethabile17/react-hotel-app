@@ -8,20 +8,20 @@ import { useLocation } from "react-router-dom";
 import './checkoutDetails.css';
 
 const CheckoutDetails = () => {
-    const [{ options, isPending }, paypalDispatch] = usePayPalScriptReducer(); // Renamed this dispatch to paypalDispatch
+    const [{ options, isPending }, paypalDispatch] = usePayPalScriptReducer(); 
     const [currency, setCurrency] = useState(options.currency);
 
     const location = useLocation();
-    const { arrivalDate, leaveDate, totalPrice, room } = location.state || {}; // Now extracting room from location.state
+    const { arrivalDate, leaveDate, totalPrice, room } = location.state || {}; 
 
-    const dispatch = useDispatch(); // Kept this dispatch for Redux actions
+    const dispatch = useDispatch(); 
 
-    const user = useSelector((state) => state.auth.user); // Changed to lowercase 'state'
+    const user = useSelector((state) => state.auth.user); 
 
     const bookingData = {
         firstName: user?.firstName || "Guest First Name",
         email: user?.email || "",
-        roomType: room?.roomType || "Standard", // Now using room from location.state
+        roomType: room?.roomType || "Standard", 
         arrivalDate: arrivalDate,
         leaveDate: leaveDate,
     };
@@ -37,7 +37,7 @@ const CheckoutDetails = () => {
 
     const onCurrencyChange = ({ target: { value } }) => {
         setCurrency(value);
-        paypalDispatch({ // Using paypalDispatch here
+        paypalDispatch({ 
             type: "resetOptions",
             value: {
                 ...options,
@@ -70,7 +70,7 @@ const CheckoutDetails = () => {
             };
 
             addBookingToFirestore(updatedBookingData);
-            dispatch(addBookings(updatedBookingData)); // Redux dispatch
+            dispatch(addBookings(updatedBookingData)); 
 
             alert(`Transaction completed by ${details.payer.name.given_name}`);
         }).catch((err) => {

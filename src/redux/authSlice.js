@@ -49,16 +49,16 @@ const authSlice = createSlice({
 
 export const { setLoading, setUser, setError, logout, initializeUser } = authSlice.actions;
 
-// Updated signUp function
+
 export const signUp = ({ email, password, fullName }) => async (dispatch) => {
   dispatch(setLoading());
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     
-    // Create a document reference for the user's profile
-    const profileRef = doc(db, "users", userCredential.user.uid); // Reference the user document
     
-    // Set user profile data in the user's document
+    const profileRef = doc(db, "users", userCredential.user.uid); 
+    
+    
     await setDoc(profileRef, {
       fullName,
       email,
@@ -85,16 +85,16 @@ export const signIn = ({ email, password }) => async (dispatch) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-    // Fetch user role directly from the users collection
+    
     const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
     
-    // Check if the user document exists
+    
     if (userDoc.exists()) {
       const userData = userDoc.data();
       dispatch(setUser({
         uid: userCredential.user.uid,
         email: userCredential.user.email,
-        role: userData.role // Assuming 'role' is a field in the users collection
+        role: userData.role 
       }));
     } else {
       dispatch(setError("User not found."));

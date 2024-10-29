@@ -1,7 +1,7 @@
 import { async } from "@firebase/util";
 import { createSlice } from '@reduxjs/toolkit';
 import { getDocs, collection, addDoc, doc, getDoc } from 'firebase/firestore';
-import { db, auth } from '../configure/firebase'; // Firestore config
+import { db, auth } from '../configure/firebase'; 
 import { useId } from "react";
 import { setUser } from "./authSlice";
 
@@ -59,7 +59,7 @@ export const fetchBookings = () => async (dispatch) => {
   try {
     const querySnapshot = await getDocs(collection(db, "bookings"));
     const bookingsList = querySnapshot.docs.map(doc => doc.data());
-    dispatch(setData(bookingsList)); // Store in Redux
+    dispatch(setData(bookingsList)); 
   } catch (error) {
     dispatch(setError(error.message));
   }
@@ -69,7 +69,7 @@ export const fetchBookings = () => async (dispatch) => {
 export const addBookings = ({fullName, email, roomType, arrivalDate, leaveDate,  totalPrice , bookingData}) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    // Add a new document with a generated id.
+    
     const docRef = await addDoc(collection(db, "bookings"), {
       fullName: fullName,
       email:  email,
@@ -103,7 +103,7 @@ export const getBookings = () => async (dispatch) => {
 export const addRooms = ({description, image, roomNumber, roomType, price, guests,   bookingData}) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    // Add a new document with a generated id.
+    
     const docRef = await addDoc(collection(db, "Room"), {
       roomType: roomType,
       price:  price,
@@ -138,7 +138,7 @@ export const fetchUser = (uid) => async (dispatch) => {
 export const addReview = (reviewData) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    // Add a new document with a generated id.
+
     const docRef = await addDoc(collection(db, "Reviews"), {
       reviewData
     });

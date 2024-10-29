@@ -6,7 +6,7 @@ import {
   faTwitter,
   faInstagram,
   faLinkedin,
-} from "@fortawesome/free-brands-svg-icons"; // Import social icons
+} from "@fortawesome/free-brands-svg-icons"; 
 
 import Right from "../images/Copyright All Rights Reserved.png";
 import "./footer.css";

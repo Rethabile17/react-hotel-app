@@ -12,7 +12,7 @@ function UserProfile() {
 
   useEffect(() => {
     if (user && user.uid) {
-      dispatch(fetchUser(user.uid)); // Pass the user's uid to fetch the correct data
+      dispatch(fetchUser(user.uid)); 
     }
   }, [dispatch, user]);
 

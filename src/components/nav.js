@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import '../components/nav.css';
 
 const Nav = () => {
-  const [activeItem, setActiveItem] = useState('Home'); // Set 'Home' as default active item
+  const [activeItem, setActiveItem] = useState('Home'); 
   const handleMenuClick = (item) => {
-    setActiveItem(item); // Update active item when clicked
+    setActiveItem(item); 
   };
 
   const navigate = useNavigate();
