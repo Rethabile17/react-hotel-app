@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import logo from "../images/Gold_Exclusive_Royal_Luxury_Hotel_Logo-removebg-preview 2.png";
 import '../components/nav.css';
 
 const Nav = () => {
@@ -19,6 +20,10 @@ const Nav = () => {
     navigate("/about")
   }
 
+  const  handleContact = () =>{
+    navigate("/footer")
+  }
+
   const handleLogout = () =>{
     navigate("/")
   }
@@ -30,7 +35,7 @@ const Nav = () => {
   return (
     <div className="nav-container">
       <div>
-        <h1>Logo</h1>
+        <img src={logo}  className="nav-logo" alt='Hotel Logo'/>
       </div>
       <ul>
         <li
@@ -57,7 +62,9 @@ const Nav = () => {
         </li>
         <li
           className={activeItem === 'Contact' ? 'active' : ''}
-          onClick={() => handleMenuClick('Contact')}
+          onClick={() =>{
+            handleContact()
+           handleMenuClick('Contact')}}
         >
           Contact
         </li>

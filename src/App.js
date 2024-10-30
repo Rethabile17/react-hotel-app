@@ -13,6 +13,8 @@ import CheckoutDetails from './components/checkoutDetails';
 import Admin from "./components/admin"
 import UseProfile from "./components/userprofile";
 import ServicerDetails from "./components/servicerDetails";
+import Footer from './components/footer';
+import TermsAndConditions from "./components/TermsAndConditions";
 import Rate from "./components/rate";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import './App.css';
@@ -45,6 +47,8 @@ function App() {
         <Route path="/userprofile" element={<UseProfile/>} />
         <Route path="/servicerDetails" element={<ServicerDetails/>} />
         <Route path="/rate" element={<Rate/>} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+        <Route path='/footer' element={<Footer/>} />
         
       </Routes>
       </BrowserRouter>

@@ -1,24 +1,35 @@
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   padding: 1rem;
   background-color: #F8F8F8;
 }
+
+.nav-logo {
+  height: 25vh; 
+  display: flex;
+  align-items: center; 
+}
+
 ul {
   display: flex;
   gap: 1.5rem;
   margin: 0;
   padding: 0;
 }
+
 li {
   padding: 1rem;
   list-style: none;
   font-size: 1.2rem;
   cursor: pointer;
 }
+
 li.active {
   background-color: #201719;
   color: white;
   border-radius: 8px;
 }
+
+

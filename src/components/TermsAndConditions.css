@@ -1,0 +1,56 @@
+.terms-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  .terms-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  .terms-section {
+    margin-bottom: 1.5rem;
+  }
+  .terms-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+  .terms-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+  }
+  .terms-footer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .terms-footer-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 600px) {
+    .terms-container {
+      padding: 1rem;
+    }
+    .terms-title {
+      font-size: 1.75rem;
+    }
+    .terms-subtitle {
+      font-size: 1.15rem;
+    }
+    .terms-text {
+      font-size: 0.95rem;
+    }
+    .terms-footer-text {
+      font-size: 0.85rem;
+    }
+  }

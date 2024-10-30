@@ -62,6 +62,8 @@ function Register() {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Link to={"/TermsAndConditions"}><p>Terms And Conditions</p></Link>
+
             <button className="register-button" onClick={create}>
               Create Account
             </button>
